@@ -2,6 +2,10 @@
 
 import java.util.ArrayList;
 
+/**
+ * This class runs the game.
+ *
+ */
 public class BouncingBall {
 	
 	public static void main(String[] args) {
