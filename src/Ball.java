@@ -1,6 +1,4 @@
 
-import java.util.ArrayList;
-
 /**
  * This class models a ball with a position and velocity.
  *
@@ -37,25 +35,13 @@ public class Ball {
 
 	/**
 	 * This method checks for obstacles or walls updates the velocity of the ball accordingly.
-	 * @param obstacles
 	 */
-	public void checkForBounce(ArrayList<Obstacle> obstacles) {
+	public void checkForBounce() {
 		if (position.x <= 20.0 || position.x >= 480.0) {
 			this.velocity = new Vector2(-this.velocity.x, this.velocity.y);
 		}
 		if (position.y <= 20.0 || position.y >= 480.0) {
 			this.velocity = new Vector2(this.velocity.x, -this.velocity.y);
-		}
-		for (Obstacle o : obstacles) {
-			double radiusSum = 20 + o.radius; // 20 is the ball's hard-coded radius
-			double distToObstacle = this.position.distanceTo(o.pos);
-			if (distToObstacle < radiusSum) {
-				Vector2 awayFromObstacleCenter = this.position.minus(o.pos);
-				awayFromObstacleCenter = awayFromObstacleCenter.normalized();
-				this.velocity = this.velocity.reflect(awayFromObstacleCenter);
-				awayFromObstacleCenter = awayFromObstacleCenter.times(radiusSum - distToObstacle);
-				this.position = this.position.plus(awayFromObstacleCenter);
-			}
 		}
 	}
 
