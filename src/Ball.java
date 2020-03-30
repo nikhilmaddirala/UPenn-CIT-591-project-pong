@@ -15,11 +15,9 @@ public class Ball {
 	// ================================================================================
 	public Ball(double x, double y, double speed) {
 		this.position = new Vector2(x, y);
-		this.velocity = new Vector2(Math.random(), Math.random());
-		this.velocity = this.velocity.times(2.0);
-		this.velocity = this.velocity.minus(new Vector2(1.0, 1.0));
+		this.velocity = new Vector2(250, 0); // initialize ball to move horizontally
 		this.velocity = this.velocity.normalized();
-		this.velocity = this.velocity.times(speed);
+		this.velocity = this.velocity.times(speed); // todo - for reset, using negative speed will move ball in opposite direction
 	}
 
 	// ================================================================================
