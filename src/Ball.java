@@ -32,12 +32,9 @@ public class Ball {
 	}
 
 	/**
-	 * This method checks for obstacles or walls updates the velocity of the ball accordingly.
+	 * This method checks for top and bottom walls and updates the velocity of the ball accordingly.
 	 */
 	public void checkForBounce() {
-		if (position.x <= 20.0 || position.x >= 480.0) {
-			this.velocity = new Vector2(-this.velocity.x, this.velocity.y);
-		}
 		if (position.y <= 20.0 || position.y >= 480.0) {
 			this.velocity = new Vector2(this.velocity.x, -this.velocity.y);
 		}
