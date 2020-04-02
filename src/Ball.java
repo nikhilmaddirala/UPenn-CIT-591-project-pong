@@ -34,6 +34,10 @@ public class Ball {
 	public void updatePosition(double dt) {
 		this.position = this.position.plus(this.velocity.times(dt));
 	}
+	
+	public void setVelocity(Vector2 velocity) {
+		this.velocity = velocity;
+	}
 
 	/**
 	 * This method checks for obstacles or walls updates the velocity of the ball accordingly.
@@ -59,17 +63,6 @@ public class Ball {
 		}
 	}
 	
-	/**
-	 * This method checks whether the ball should bounce off a paddle.
-	 * @param leftPaddle
-	 * @param rightPaddle
-	 */
-	public void checkForBounce(LeftPaddle leftPaddle, RightPaddle rightPaddle) {
-		if (this.position.x - leftPaddle.position.x <= 30 || rightPaddle.position.x - this.position.x <= 30) {
-			this.velocity = new Vector2(-this.velocity.x, this.velocity.y);
-		}
-	}
-
 	/**
 	 * This method draws the ball.
 	 */

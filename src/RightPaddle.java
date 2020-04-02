@@ -9,15 +9,18 @@ public class RightPaddle {
 	// Variables
 	// ================================================================================
 	Vector2 position;
-	double halfWidth = 10;
-	double halfHeight = 50;
-	double speed = 20;
+	double halfWidth;
+	double halfHeight;
+	double speed;
 
 	// ================================================================================
 	// Constructors
 	// ================================================================================
 	public RightPaddle(double x, double y, double speed) {
 		this.position = new Vector2(x, y);
+		this.halfHeight = 50;
+		this.halfWidth = 10;
+		this.speed = 20;
 	}
 
 	// ================================================================================
@@ -41,6 +44,18 @@ public class RightPaddle {
 			this.position = this.position.plus(downVelocity.times(dt));
 		}
 
+	}
+	
+	/**
+	 * This method checks whether the ball should bounce off a paddle.
+	 */
+	public void checkForBounce(Ball ball) {
+		if (this.position.x - ball.position.x <= 20 + this.halfWidth && 
+				ball.position.y <= this.position.y + this.halfHeight &&
+				ball.position.y >= this.position.y - this.halfHeight) {
+			Vector2 newBallVelocity = new Vector2(-ball.velocity.x, ball.velocity.y);
+			ball.setVelocity(newBallVelocity);
+		}
 	}
 
 	/**

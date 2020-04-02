@@ -9,15 +9,18 @@ public class LeftPaddle {
 	// Variables
 	// ================================================================================
 	Vector2 position;
-	double halfWidth = 10;
-	double halfHeight = 50;
-	double speed = 20;
+	double halfWidth;
+	double halfHeight;
+	double speed;
 
 	// ================================================================================
 	// Constructors
 	// ================================================================================
 	public LeftPaddle(double x, double y, double speed) {
 		this.position = new Vector2(x, y);
+		this.halfHeight = 50;
+		this.halfWidth = 10;
+		this.speed = 20;
 	}
 
 	// ================================================================================
@@ -40,6 +43,19 @@ public class LeftPaddle {
 		}
 
 	}
+	
+	/**
+	 * This method checks whether the ball should bounce off a paddle.
+	 */
+	public void checkForBounce(Ball ball) {
+		if (ball.position.x - this.position.x <= 20 + this.halfWidth && 
+				ball.position.y <= this.position.y + this.halfHeight &&
+				ball.position.y >= this.position.y - this.halfHeight) {
+			Vector2 newBallVelocity = new Vector2(-ball.velocity.x, ball.velocity.y);
+			ball.setVelocity(newBallVelocity);
+		}
+	}
+
 
 	/**
 	 * This method draws the paddle.

@@ -24,7 +24,8 @@ public class Pong {
 				obstacles.add(newObst);
 			}
 			ball.checkForBounce(obstacles);
-			ball.checkForBounce(leftPaddle, rightPaddle);
+			leftPaddle.checkForBounce(ball);
+			rightPaddle.checkForBounce(ball);
 			ball.updatePosition(0.167);
 			ball.draw();
 			
