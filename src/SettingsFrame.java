@@ -9,7 +9,7 @@ import java.awt.event.ActionListener;
  */
 public class SettingsFrame extends JFrame implements ActionListener {
     private ButtonGroup difficulty;
-    private ButtonGroup numPlayers;
+    private ButtonGroup mode;
 
     private JRadioButton easy;
     private JRadioButton medium;
@@ -20,7 +20,7 @@ public class SettingsFrame extends JFrame implements ActionListener {
     private JRadioButton twoPlayer;
 
     private int selectedDifficulty;
-    private int selectedNumPlayers;
+    private int selectedMode;
 
     /**
      * Contructor for SettingsFrame
@@ -32,7 +32,7 @@ public class SettingsFrame extends JFrame implements ActionListener {
 
         // Defaults settings
         selectedDifficulty = 1; // 1 for easy
-        selectedNumPlayers = 1; // 1 for single player
+        selectedMode = 1; // 1 for single player
 
 
 
@@ -46,11 +46,11 @@ public class SettingsFrame extends JFrame implements ActionListener {
         difficulty.add(hard);
 
         // Radio buttons for selecting number of players
-        numPlayers = new ButtonGroup();
+        mode = new ButtonGroup();
         singlePlayer = new JRadioButton("Single Players", true); // default selection
         twoPlayer = new JRadioButton("Two Players", false);
-        numPlayers.add(singlePlayer);
-        numPlayers.add(twoPlayer);
+        mode.add(singlePlayer);
+        mode.add(twoPlayer);
 
         // Start button
         Button startBtn = new Button("Start");
@@ -91,12 +91,12 @@ public class SettingsFrame extends JFrame implements ActionListener {
         }
 
         if (singlePlayer.isSelected()) {
-           selectedNumPlayers = 1;
+           selectedMode = 1;
         } else {
-            selectedNumPlayers = 2;
+            selectedMode = 2;
         }
 
-        new Table(selectedDifficulty, selectedNumPlayers);
+        new Table(selectedDifficulty, selectedMode);
 
         // Remove this window
         dispose();
