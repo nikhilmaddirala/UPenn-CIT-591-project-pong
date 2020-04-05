@@ -105,8 +105,4 @@ public class SettingsFrame extends JFrame implements ActionListener {
 
     }
 
-//    public static void main(String[] args) {
-//        SettingsFrame settingsFrame = new SettingsFrame();
-//    }
-
 }
