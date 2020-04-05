@@ -82,6 +82,7 @@ public class SettingsFrame extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
 
+        // TODO: minor optimization, since easy is default, only need to check for medium and hard, same with only checking for twoPlayer
         if (easy.isSelected()) {
             selectedDifficulty = 1;
         } else if (medium.isSelected()) {
@@ -96,10 +97,16 @@ public class SettingsFrame extends JFrame implements ActionListener {
             selectedMode = 2;
         }
 
-        new Table(selectedDifficulty, selectedMode);
-
         // Remove this window
         dispose();
+
+        // TODO: This is bringing up a new frame and passing the data along but the new frame is not being updated properly
+        new Table(selectedDifficulty, selectedMode);
+
     }
+
+//    public static void main(String[] args) {
+//        SettingsFrame settingsFrame = new SettingsFrame();
+//    }
 
 }
