@@ -30,6 +30,10 @@ public class Ball {
 	public void updatePosition(double dt) {
 		this.position = this.position.plus(this.velocity.times(dt));
 	}
+	
+	public void setVelocity(Vector2 velocity) {
+		this.velocity = velocity;
+	}
 
 	/**
 	 * This method checks for top and bottom walls and updates the velocity of the ball accordingly.
@@ -39,7 +43,7 @@ public class Ball {
 			this.velocity = new Vector2(this.velocity.x, -this.velocity.y);
 		}
 	}
-
+	
 	/**
 	 * This method draws the ball.
 	 */
