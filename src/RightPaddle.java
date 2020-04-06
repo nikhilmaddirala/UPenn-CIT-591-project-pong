@@ -14,10 +14,7 @@ public class RightPaddle extends Paddle {
 	// Constructors
 	// ================================================================================
 	public RightPaddle(double x, double y, double speed) {
-		this.position = new Vector2(x, y);
-		this.halfHeight = 50;
-		this.halfWidth = 10;
-		this.speed = 20;
+		super(x, y, speed);
 	}
 
 	// ================================================================================
