@@ -29,12 +29,11 @@ public class SettingsFrame extends JFrame implements ActionListener {
         super("Pong");
 
         //TODO: ADD INSTRUCTIONS TEXT AND FIX LAYOUT
+        //TODO: Initial Load is pretty slow, see if that's fixable
 
         // Defaults settings
         selectedDifficulty = 1; // 1 for easy
         selectedMode = 1; // 1 for single player
-
-
 
         // Radio buttons for difficulty selection
         difficulty = new ButtonGroup();
@@ -70,9 +69,12 @@ public class SettingsFrame extends JFrame implements ActionListener {
         // Frame info
         setSize(Pong.WIDTH, Pong.HEIGHT);
         setLayout(new GridLayout());
-        setVisible(true);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+    }
+
+    public void init() {
+        setVisible(true);
     }
 
     /**
@@ -97,12 +99,16 @@ public class SettingsFrame extends JFrame implements ActionListener {
             selectedMode = 2;
         }
 
+        Table table = new Table(selectedDifficulty, selectedMode);
+
+        try {
+            table.execute();
+        } catch (Exception ev) {
+            ev.printStackTrace();
+        }
+
         // Remove this window
         dispose();
-
-        // TODO: This is bringing up a new frame and passing the data along but the new frame is not being updated properly
-        new Table(selectedDifficulty, selectedMode);
-
     }
 
 }

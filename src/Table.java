@@ -1,7 +1,9 @@
+import javax.swing.*;
+
 /**
  * Table is where the initial game state is set up and subsequently tracked during game play.
  */
-public class Table {
+public class Table extends SwingWorker {
 
    private int difficulty;
    private int mode;
@@ -27,11 +29,16 @@ public class Table {
         leftPaddle = getLeftPaddleByLevel();
         rightPaddle = getRightPaddleByLevel();
 
-        createTable();
-        initGame();
 
         // TODO: Incorporate Obstacles
 
+    }
+
+    @Override
+    public Object doInBackground() {
+        createTable();
+        initGame();
+        return null;
     }
 
     /**
