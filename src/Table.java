@@ -138,6 +138,7 @@ public class Table extends SwingWorker {
             PennDraw.clear();
             leftPaddle.checkForBounce(ball);
             rightPaddle.checkForBounce(ball);
+            ball.checkForBounce();
             ball.updatePosition(0.167);
             ball.draw();
 
