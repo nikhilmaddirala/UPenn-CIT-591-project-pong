@@ -26,13 +26,4 @@ public class GoodObstacle extends Obstacle {
 
 	}
 
-	/**
-	 * This method draws the good obstacle.
-	 */
-	public void draw() {
-		PennDraw.setPenColor(PennDraw.GREEN);
-		PennDraw.filledCircle(position.x, position.y, 20);
-		// todo - change shape from circle to something else
-	}
-
 }

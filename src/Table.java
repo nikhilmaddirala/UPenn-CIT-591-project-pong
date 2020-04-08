@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 import javax.swing.*;
 
 /**
@@ -14,6 +16,7 @@ public class Table extends SwingWorker {
    private Ball ball;
    private LeftPaddle leftPaddle;
    private RightPaddle rightPaddle;
+   private ArrayList<Obstacle> Obstacles;
 
     /**
      * Table constructor
@@ -28,6 +31,7 @@ public class Table extends SwingWorker {
         ball = getBallByLevel();
         leftPaddle = getLeftPaddleByLevel();
         rightPaddle = getRightPaddleByLevel();
+        Obstacles = getObstaclesByLevel();
 
 
         // TODO: Incorporate Obstacles
@@ -118,6 +122,35 @@ public class Table extends SwingWorker {
         // return rp, below if to prevent compile error
         return new RightPaddle(490, 250, 10);
     }
+    
+    private ArrayList<Obstacle> getObstaclesByLevel(){
+        // difficulty is 1, 2, or 3; mode is 1 or 2
+        if (difficulty == 1 && mode == 1) {
+            // make me obstacles
+        } else if (difficulty == 1 && mode == 2) {
+            // ...
+        } else if (difficulty == 2 && mode == 1) {
+            // ...
+        } else if (difficulty == 2 && mode == 2) {
+            // ...
+        } else if (difficulty == 3 && mode == 1) {
+            // ...
+        } else {
+            // ... (diff 3 and mode 2 case)
+        }
+
+        // return obstacles
+        ArrayList<Obstacle> Obstacles = new ArrayList<Obstacle>();
+        
+        GoodObstacle goodObstacle1 = new GoodObstacle((Pong.WIDTH - 50)*Math.random(),Pong.HEIGHT*Math.random());
+        Obstacles.add(goodObstacle1);
+        
+        BadObstacle badObstacle1 = new BadObstacle((Pong.WIDTH - 50)*Math.random(),Pong.HEIGHT*Math.random());
+        Obstacles.add(badObstacle1);
+        
+        return Obstacles;
+
+    }
 
 
     /**
@@ -140,6 +173,10 @@ public class Table extends SwingWorker {
             rightPaddle.checkForBounce(ball);
             ball.updatePosition(0.167);
             ball.draw();
+            
+            for (Obstacle obstacle : Obstacles) {
+            	obstacle.draw();
+			}
 
             leftPaddle.updatePosition(0.167);
             leftPaddle.draw();
