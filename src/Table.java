@@ -174,7 +174,7 @@ public class Table extends SwingWorker {
             ball.updatePosition(0.167);
             ball.draw();
             
-            for (Obstacle obstacle : Obstacles) {
+            for (Obstacle obstacle : obstacles) {
             	obstacle.draw();
 			}
 
