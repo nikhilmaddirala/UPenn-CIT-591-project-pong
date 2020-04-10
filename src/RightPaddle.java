@@ -29,11 +29,11 @@ public class RightPaddle extends Paddle {
 	 * @param ball
 	 */
 	public void updatePosition(double dt, Ball ball) {
-		if (ball.position.y > this.position.y) {
+		if (ball.getPosition().y > this.position.y) {
 			Vector2 upVelocity = new Vector2(0, this.speed);
 			this.position = this.position.plus(upVelocity.times(dt));
 		}
-		if (ball.position.y < this.position.y) {
+		if (ball.getPosition().y < this.position.y) {
 			Vector2 downVelocity = new Vector2(0, (-1) * this.speed);
 			this.position = this.position.plus(downVelocity.times(dt));
 		}

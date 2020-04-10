@@ -7,18 +7,19 @@ public class Ball {
 	// ================================================================================
 	// Variables
 	// ================================================================================
-	Vector2 position;
-	Vector2 velocity;
+	private Vector2 initialPosition;
+	private Vector2 position;
+	private Vector2 velocity;
 
 	// ================================================================================
 	// Constructors
 	// ================================================================================
 	public Ball(double x, double y, double speed) {
-		this.position = new Vector2(x, y);
-		this.velocity = new Vector2(250, 0); // initialize ball to move horizontally
-		this.velocity = this.velocity.normalized();
-		this.velocity = this.velocity.times(speed); // todo - for reset, using negative speed will move ball in opposite
-													// direction
+		initialPosition = new Vector2(x, y);
+		position = new Vector2(x, y);
+		velocity = new Vector2(Math.random(), Math.random());
+		velocity = velocity.normalized();
+		velocity = velocity.times(speed);
 	}
 
 	// ================================================================================
@@ -60,4 +61,26 @@ public class Ball {
 		PennDraw.filledCircle(position.x, position.y, 20);
 	}
 
+	/**
+	 * Reset the ball to the position it was initialized to
+	 */
+	public void reset() {
+		position = new Vector2(initialPosition.x, initialPosition.y);
+	}
+
+	/**
+	 * Get the current position
+	 * @return Vector2 - ball position
+	 */
+	public Vector2 getPosition() {
+		return position;
+	}
+
+	/**
+	 * Get the current velocity
+	 * @return Vector2 - ball velocity
+	 */
+	public Vector2 getVelocity() {
+		return velocity;
+	}
 }
