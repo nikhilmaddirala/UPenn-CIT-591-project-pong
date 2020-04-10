@@ -31,7 +31,7 @@ public class Table extends SwingWorker {
         ball = getBallByLevel();
         leftPaddle = getLeftPaddleByLevel();
         rightPaddle = getRightPaddleByLevel();
-        Obstacles = getObstaclesByLevel();
+        obstacles = getObstaclesByLevel();
 
 
         // TODO: Incorporate Obstacles
