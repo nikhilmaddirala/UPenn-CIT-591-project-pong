@@ -16,7 +16,7 @@ public class Table extends SwingWorker {
    private Ball ball;
    private LeftPaddle leftPaddle;
    private RightPaddle rightPaddle;
-   private ArrayList<Obstacle> Obstacles;
+   private ArrayList<Obstacle> obstacles;
 
     /**
      * Table constructor
@@ -140,15 +140,15 @@ public class Table extends SwingWorker {
         }
 
         // return obstacles
-        ArrayList<Obstacle> Obstacles = new ArrayList<Obstacle>();
+        ArrayList<Obstacle> obstacles = new ArrayList<Obstacle>();
         
         GoodObstacle goodObstacle1 = new GoodObstacle((Pong.WIDTH - 50)*Math.random(),Pong.HEIGHT*Math.random());
-        Obstacles.add(goodObstacle1);
+        obstacles.add(goodObstacle1);
         
         BadObstacle badObstacle1 = new BadObstacle((Pong.WIDTH - 50)*Math.random(),Pong.HEIGHT*Math.random());
-        Obstacles.add(badObstacle1);
+        obstacles.add(badObstacle1);
         
-        return Obstacles;
+        return obstacles;
 
     }
 
