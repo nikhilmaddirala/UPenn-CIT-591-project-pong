@@ -25,13 +25,4 @@ public class BadObstacle extends Obstacle {
 
 	}
 
-	/**
-	 * This method draws the bad obstacle.
-	 */
-	public void draw() {
-		PennDraw.setPenColor(PennDraw.RED);
-		PennDraw.filledCircle(position.x, position.y, 20);
-		// todo - change shape from circle to something else
-	}
-
 }
