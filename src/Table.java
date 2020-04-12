@@ -1,6 +1,5 @@
-import java.util.ArrayList;
-
 import javax.swing.*;
+import java.util.ArrayList;
 
 /**
  * Table is where the initial game state is set up and subsequently tracked during game play.
@@ -169,6 +168,11 @@ public class Table extends SwingWorker {
 
         while(true) {
             PennDraw.clear();
+
+            writeScore(20, 480, leftScore);
+            writeScore(480, 480, rightScore);
+
+            ball.checkForBounce();
             leftPaddle.checkForBounce(ball);
             rightPaddle.checkForBounce(ball);
             ball.checkForBounce();
@@ -185,6 +189,8 @@ public class Table extends SwingWorker {
             rightPaddle.updatePosition(0.167, ball);
             rightPaddle.draw();
 
+            updateScore();
+
             PennDraw.advance();
         }
 
@@ -194,22 +200,31 @@ public class Table extends SwingWorker {
      * Increment and decrement left and right paddle scores during game play
      */
     private void updateScore() {
-        // Detect where the ball goes outside of table and allocate point to the right side
-        // At different levels, there may be conditions that cause player to lose points
-        // calls writeScore()
+        Vector2 position = ball.getPosition();
+
+        if (position.x <= 0) {
+            rightScore++;
+            reset();
+        } else if (position.x >= 500) {
+            leftScore++;
+            reset();
+        }
     }
 
     /**
      * Write the current score to the table frame
      */
-    private void writeScore() {
-
+    private void writeScore(double x, double y, int score) {
+        PennDraw.setFont("Courier", 30);
+        PennDraw.text(x, y, Integer.toString(score));
     }
 
     /**
      * Reset the ball and paddle positions after a player scores
      */
     private void reset() {
-
+        ball.reset();
+        leftPaddle.reset();
+        rightPaddle.reset();
     }
 }
