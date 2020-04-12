@@ -29,17 +29,13 @@ public class RightPaddle extends Paddle {
 	 * @param ball
 	 */
 	public void updatePosition(double dt, Ball ball) {
-		if (ball.getPosition().y > this.position.y) {
+		if (ball.getPosition().y > this.position.y && (this.position.y + this.halfHeight <= Pong.HEIGHT)) {
 			Vector2 upVelocity = new Vector2(0, this.speed);
 			this.position = this.position.plus(upVelocity.times(dt));
 		}
-		if (ball.getPosition().y < this.position.y) {
+		if (ball.getPosition().y < this.position.y && (this.position.y - this.halfHeight >= 0)) {
 			Vector2 downVelocity = new Vector2(0, (-1) * this.speed);
 			this.position = this.position.plus(downVelocity.times(dt));
 		}
-
-		// todo - check for edge of table
-
 	}
-
 }

@@ -15,11 +15,13 @@ public class Ball {
 	// Constructors
 	// ================================================================================
 	public Ball(double x, double y, double speed) {
-		initialPosition = new Vector2(x, y);
-		position = new Vector2(x, y);
-		velocity = new Vector2(Math.random(), Math.random());
-		velocity = velocity.normalized();
-		velocity = velocity.times(speed);
+		this.initialPosition = new Vector2(x, y);
+		this.position = new Vector2(x, y);
+		this.velocity = new Vector2(Math.random(), Math.random());
+		this.velocity = this.velocity.times(2.0);
+		this.velocity = this.velocity.minus(new Vector2(1.0, 1.0));
+		this.velocity = this.velocity.normalized();
+		this.velocity = this.velocity.times(speed);
 	}
 
 	// ================================================================================

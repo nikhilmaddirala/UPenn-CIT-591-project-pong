@@ -17,11 +17,13 @@ public class Obstacle {
 	// ================================================================================
 	// Methods
 	// ================================================================================
-	
+
 	/**
-	 * This method checks whether the obstacle is triggered based on whether a ball touches it.
+	 * This method checks whether the obstacle is triggered based on whether a ball
+	 * touches it.
+	 * 
 	 * @param ball The ball that triggers the obstacle.
-	 * @return 
+	 * @return
 	 */
 	public boolean checkForTrigger(Ball ball) {
 		boolean result = false;
@@ -29,6 +31,23 @@ public class Obstacle {
 		// todo
 
 		return result;
+	}
+
+	/**
+	 * This method draws the obstacle. Good obstacles are drawn as green squares and
+	 * bad obstacles are drawn as red squares.
+	 */
+	public void draw() {
+
+		if (this instanceof BadObstacle) {
+			PennDraw.setPenColor(PennDraw.RED);
+		}
+
+		if (this instanceof GoodObstacle) {
+			PennDraw.setPenColor(PennDraw.GREEN);
+		}
+
+		PennDraw.filledSquare(position.x, position.y, 10);
 	}
 
 }

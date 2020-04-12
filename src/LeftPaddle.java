@@ -27,16 +27,15 @@ public class LeftPaddle extends Paddle {
 	 * @param dt
 	 */
 	public void updatePosition(double dt) {
-		if (PennDraw.isKeyPressed(KeyEvent.VK_UP)) {
+		
+		if (PennDraw.isKeyPressed(KeyEvent.VK_UP) && (this.position.y + this.halfHeight <= Pong.HEIGHT)) {
 			Vector2 upVelocity = new Vector2(0, this.speed);
 			this.position = this.position.plus(upVelocity.times(dt));
 		}
-		if (PennDraw.isKeyPressed(KeyEvent.VK_DOWN)) {
+		if (PennDraw.isKeyPressed(KeyEvent.VK_DOWN) && (this.position.y - this.halfHeight >= 0)) {
 			Vector2 downVelocity = new Vector2(0, (-1) * this.speed);
 			this.position = this.position.plus(downVelocity.times(dt));
 		}
-
-		// todo - check for edge of table
 
 	}
 
