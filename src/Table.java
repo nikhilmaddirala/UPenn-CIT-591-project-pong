@@ -175,7 +175,6 @@ public class Table extends SwingWorker {
             ball.checkForBounce();
             leftPaddle.checkForBounce(ball);
             rightPaddle.checkForBounce(ball);
-            ball.checkForBounce();
             ball.updatePosition(0.167);
             ball.draw();
             
