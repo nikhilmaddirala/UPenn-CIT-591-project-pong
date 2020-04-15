@@ -92,10 +92,10 @@ public class SettingsFrame extends JFrame implements ActionListener {
         }
 
         //create a table instance
-        Table table = new Table();
+        Pong pong = new Pong();
 
         try {
-            table.execute();
+            pong.execute();
         } catch (Exception ev) {
             ev.printStackTrace();
         }
