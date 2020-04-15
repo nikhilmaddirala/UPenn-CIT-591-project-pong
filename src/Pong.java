@@ -24,7 +24,7 @@ public class Pong extends SwingWorker {
         rightScore = new Score();
 
         // Todo - should be instantiated based on level selected
-        ball = new Ball(250, 250, 25);
+        ball = new Ball();
 
         leftPaddle = new LeftPaddle(10, 250, 10);
         rightPaddle = new RightPaddle(490, 250, 10);
@@ -105,7 +105,6 @@ public class Pong extends SwingWorker {
             reset();
         }
     }
-
 
     /**
      * Reset the ball and paddle positions to their initial values
