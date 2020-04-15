@@ -8,8 +8,6 @@ import java.awt.event.ActionListener;
  * with those settings applied
  */
 public class SettingsFrame extends JFrame implements ActionListener {
-    private ButtonGroup difficulty;
-    private ButtonGroup mode;
 
     private JRadioButton easy;
     private JRadioButton medium;
@@ -19,11 +17,9 @@ public class SettingsFrame extends JFrame implements ActionListener {
     private JRadioButton singlePlayer;
     private JRadioButton twoPlayer;
 
-    private int selectedDifficulty;
-    private int selectedMode;
 
     /**
-     * Contructor for SettingsFrame
+     * Constructor for SettingsFrame
      */
     public SettingsFrame() {
         super("Pong");
@@ -31,12 +27,8 @@ public class SettingsFrame extends JFrame implements ActionListener {
         //TODO: ADD INSTRUCTIONS TEXT AND FIX LAYOUT
         //TODO: Initial Load is pretty slow, see if that's fixable
 
-        // Defaults settings
-        selectedDifficulty = 1; // 1 for easy
-        selectedMode = 1; // 1 for single player
-
         // Radio buttons for difficulty selection
-        difficulty = new ButtonGroup();
+        ButtonGroup difficulty = new ButtonGroup();
         easy = new JRadioButton("EASY", true); // default selections
         medium = new JRadioButton("MEDIUM", false);
         hard = new JRadioButton("HARD", false);
@@ -45,7 +37,7 @@ public class SettingsFrame extends JFrame implements ActionListener {
         difficulty.add(hard);
 
         // Radio buttons for selecting number of players
-        mode = new ButtonGroup();
+        ButtonGroup mode = new ButtonGroup();
         singlePlayer = new JRadioButton("Single Players", true); // default selection
         twoPlayer = new JRadioButton("Two Players", false);
         mode.add(singlePlayer);
@@ -73,6 +65,9 @@ public class SettingsFrame extends JFrame implements ActionListener {
 
     }
 
+    /**
+     * Display the frame window
+     */
     public void init() {
         setVisible(true);
     }
@@ -84,22 +79,20 @@ public class SettingsFrame extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
 
-        // TODO: minor optimization, since easy is default, only need to check for medium and hard, same with only checking for twoPlayer
-        if (easy.isSelected()) {
-            selectedDifficulty = 1;
-        } else if (medium.isSelected()) {
-            selectedDifficulty = 2;
-        } else {
-            selectedDifficulty = 3;
+        //easy is the default level so it does not need to be checked
+        if (medium.isSelected()) {
+           Level.setDifficulty(Level.MEDIUM);
+        } else if (hard.isSelected()){
+            Level.setDifficulty(Level.HARD);
         }
 
-        if (singlePlayer.isSelected()) {
-           selectedMode = 1;
-        } else {
-            selectedMode = 2;
+        //single player is the default mode so it does not need to be checked
+        if (twoPlayer.isSelected()) {
+            Level.setMode(Level.TWO_PLAYER);
         }
 
-        Table table = new Table(selectedDifficulty, selectedMode);
+        //create a table instance
+        Table table = new Table();
 
         try {
             table.execute();
