@@ -14,7 +14,17 @@ public class Ball {
 	// ================================================================================
 	// Constructors
 	// ================================================================================
-	public Ball(double x, double y, double speed) {
+	public Ball() {
+		double x = 250;
+		double y = 250;
+		double speed = 25;
+
+		if (Level.getDifficulty() == Level.MEDIUM) {
+			speed = 30;
+		} else if (Level.getDifficulty() == Level.HARD) {
+			speed = 40;
+		}
+
 		this.initialPosition = new Vector2(x, y);
 		this.position = new Vector2(x, y);
 		this.velocity = new Vector2(Math.random(), Math.random());
