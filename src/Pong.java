@@ -14,7 +14,7 @@ public class Pong extends SwingWorker {
     private Ball ball;
     private LeftPaddle leftPaddle;
     private RightPaddle rightPaddle;
-    private ArrayList<Obstacle> obstacles;
+    private Obstacles obstacles;
 
     /**
      * Pong constructor
@@ -23,18 +23,11 @@ public class Pong extends SwingWorker {
         leftScore = new Score();
         rightScore = new Score();
 
-        // Todo - should be instantiated based on level selected
         ball = new Ball();
+        leftPaddle = new LeftPaddle();
+        rightPaddle = new RightPaddle();
 
-        leftPaddle = new LeftPaddle(10, 250, 10);
-        rightPaddle = new RightPaddle(490, 250, 10);
-
-        obstacles = new ArrayList<>();
-        GoodObstacle goodObstacle1 = new GoodObstacle((Pong.WIDTH - 50)*Math.random(),Pong.HEIGHT*Math.random());
-        obstacles.add(goodObstacle1);
-
-        BadObstacle badObstacle1 = new BadObstacle((Pong.WIDTH - 50)*Math.random(),Pong.HEIGHT*Math.random());
-        obstacles.add(badObstacle1);
+        // obstacles = new Obstacles();
     }
 
     /**
@@ -63,14 +56,12 @@ public class Pong extends SwingWorker {
             ball.updatePosition(0.167);
             ball.draw();
             
-            for (Obstacle obstacle : obstacles) {
-            	obstacle.draw();
-			}
+            // obstacles.draw();
 
-            leftPaddle.updatePosition(0.167);
+            leftPaddle.updatePosition(0.167, ball);
             leftPaddle.draw();
 
-            rightPaddle.updatePosition(0.167, ball);
+            rightPaddle.updatePosition(0.167);
             rightPaddle.draw();
 
             updateScore();

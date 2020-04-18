@@ -1,7 +1,7 @@
 import java.awt.event.KeyEvent;
 
 /**
- * This class models the left paddle of the game for Player 1.
+ * This class models the left paddle of the game for Player 2.
  *
  */
 public class LeftPaddle extends Paddle {
@@ -12,8 +12,8 @@ public class LeftPaddle extends Paddle {
 	// ================================================================================
 	// Constructors
 	// ================================================================================
-	public LeftPaddle(double x, double y, double speed) {
-		super(x, y, speed);
+	public LeftPaddle() {
+		super();
 	}
 
 	// ================================================================================
@@ -26,17 +26,15 @@ public class LeftPaddle extends Paddle {
 	 * 
 	 * @param dt
 	 */
-	public void updatePosition(double dt) {
-		
-		if (PennDraw.isKeyPressed(KeyEvent.VK_UP) && (this.position.y + this.halfHeight <= Pong.HEIGHT)) {
+	public void updatePosition(double dt, Ball ball) {
+		if (ball.getPosition().y > this.position.y && (this.position.y + this.halfHeight <= Pong.HEIGHT)) {
 			Vector2 upVelocity = new Vector2(0, this.speed);
 			this.position = this.position.plus(upVelocity.times(dt));
 		}
-		if (PennDraw.isKeyPressed(KeyEvent.VK_DOWN) && (this.position.y - this.halfHeight >= 0)) {
+		if (ball.getPosition().y < this.position.y && (this.position.y - this.halfHeight >= 0)) {
 			Vector2 downVelocity = new Vector2(0, (-1) * this.speed);
 			this.position = this.position.plus(downVelocity.times(dt));
 		}
-
 	}
 
 }
