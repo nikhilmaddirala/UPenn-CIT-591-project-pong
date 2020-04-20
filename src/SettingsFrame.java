@@ -13,56 +13,83 @@ public class SettingsFrame extends JFrame implements ActionListener {
     private JRadioButton medium;
     private JRadioButton hard;
 
-
     private JRadioButton singlePlayer;
     private JRadioButton twoPlayer;
-
 
     /**
      * Constructor for SettingsFrame
      */
     public SettingsFrame() {
         super("Pong");
+        //Fonts
+        Font defaultFont = new Font("Courier", Font.PLAIN, 14);
+        Font heading = new Font("Courier", Font.BOLD, 30);
 
-        //TODO: ADD INSTRUCTIONS TEXT AND FIX LAYOUT
-        //TODO: Initial Load is pretty slow, see if that's fixable
+        // Frame setup
+        setSize(Pong.WIDTH, Pong.HEIGHT);
+        setLayout(new GridBagLayout());
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+        // Layout constraints
+        GridBagConstraints constraints = new GridBagConstraints();
+
+        // Welcome panel
+        JPanel welcomePnl = new JPanel(new BorderLayout());
+        JLabel welcome = new JLabel("Welcome to Pong!", SwingConstants.CENTER);
+        welcome.setFont(heading);
+        JLabel instructions = new JLabel("Make your game selections and press Start to play.", SwingConstants.CENTER);
+        instructions.setFont(defaultFont);
+        welcomePnl.add(welcome, BorderLayout.PAGE_START);
+        welcomePnl.add(instructions, BorderLayout.PAGE_END);
+        constraints.gridx = 0;
+        constraints.gridy = 0;
+        add(welcomePnl, constraints);
+
+
+        JPanel modePnl = new JPanel();
+        // Radio buttons for selecting number of players
+        ButtonGroup mode = new ButtonGroup();
+        singlePlayer = new JRadioButton("Single Player", true); // default selection
+        twoPlayer = new JRadioButton("Two Player", false);
+        mode.add(singlePlayer);
+        mode.add(twoPlayer);
+        mode.getElements().asIterator().forEachRemaining(btn -> btn.setFont(defaultFont));
+        modePnl.add(singlePlayer);
+        modePnl.add(twoPlayer);
+        constraints.gridx = 0;
+        constraints.gridy = 1;
+        add(modePnl, constraints);
+
+
+        JPanel difficultyPnl = new JPanel();
         // Radio buttons for difficulty selection
         ButtonGroup difficulty = new ButtonGroup();
-        easy = new JRadioButton("EASY", true); // default selections
-        medium = new JRadioButton("MEDIUM", false);
-        hard = new JRadioButton("HARD", false);
+        easy = new JRadioButton("Easy", true); // default selections
+        medium = new JRadioButton("Medium", false);
+        hard = new JRadioButton("Hard", false);
         difficulty.add(easy);
         difficulty.add(medium);
         difficulty.add(hard);
+        difficulty.getElements().asIterator().forEachRemaining(btn -> btn.setFont(defaultFont));
+        difficultyPnl.add(easy);
+        difficultyPnl.add(medium);
+        difficultyPnl.add(hard);
+        constraints.gridx = 0;
+        constraints.gridy = 2;
+        add(difficultyPnl, constraints);
 
-        // Radio buttons for selecting number of players
-        ButtonGroup mode = new ButtonGroup();
-        singlePlayer = new JRadioButton("Single Players", true); // default selection
-        twoPlayer = new JRadioButton("Two Players", false);
-        mode.add(singlePlayer);
-        mode.add(twoPlayer);
 
+
+        JPanel startPnl = new JPanel();
         // Start button
         Button startBtn = new Button("Start");
-
+        startBtn.setFont(defaultFont);
         // Add event listeners
         startBtn.addActionListener(this);
-
-        // Add components to layout
-        add(singlePlayer);
-        add(twoPlayer);
-        add(easy);
-        add(medium);
-        add(hard);
-        add(startBtn);
-
-
-        // Frame info
-        setSize(Pong.WIDTH, Pong.HEIGHT);
-        setLayout(new GridLayout());
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
+        startPnl.add(startBtn);
+        constraints.gridx = 0;
+        constraints.gridy = 3;
+        add(startBtn, constraints);
     }
 
     /**
