@@ -27,7 +27,7 @@ public class Pong extends SwingWorker {
         leftPaddle = new LeftPaddle();
         rightPaddle = new RightPaddle();
 
-        // obstacles = new Obstacles();
+        obstacles = new Obstacles();
     }
 
     /**
@@ -56,7 +56,7 @@ public class Pong extends SwingWorker {
             ball.updatePosition(0.167);
             ball.draw();
             
-            // obstacles.draw();
+            obstacles.draw();
 
             leftPaddle.updatePosition(0.167, ball);
             leftPaddle.draw();

@@ -8,7 +8,6 @@ public class Obstacles {
     ArrayList<GoodObstacle> goodObstacles;
     ArrayList<BadObstacle> badObstacles;
 
-
     public Obstacles() {
 
         if (Level.getDifficulty() == Level.EASY) {
@@ -22,14 +21,18 @@ public class Obstacles {
             numberOfBadObstacles = Level.BADOBSTACLES_HARD;
         }
 
-        GoodObstacle goodObstacle1 = new GoodObstacle((Pong.WIDTH - 50)*Math.random(),Pong.HEIGHT*Math.random());
-        this.obstacles.add(goodObstacle1);
+        this.obstacles = new ArrayList<Obstacle>();
 
-        BadObstacle badObstacle1 = new BadObstacle((Pong.WIDTH - 50)*Math.random(),Pong.HEIGHT*Math.random());
-        this.obstacles.add(badObstacle1);
+        for (int i = 0; i < numberOfGoodObstacles; i++) {
+            this.obstacles.add(new GoodObstacle((Pong.WIDTH - 50) * Math.random(), (Pong.HEIGHT  - 50)*Math.random()));
+        }
+
+        for (int i = 0; i < numberOfBadObstacles; i++) {
+            this.obstacles.add(new BadObstacle((Pong.WIDTH - 50) * Math.random(), (Pong.HEIGHT  - 50)*Math.random()));
+        }
     }
 
-    public void draw(){
+    public void draw() {
         for (Obstacle obstacle : this.obstacles) {
             obstacle.draw();
         }
