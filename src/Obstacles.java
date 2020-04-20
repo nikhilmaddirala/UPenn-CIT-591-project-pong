@@ -23,10 +23,10 @@ public class Obstacles {
         }
 
         GoodObstacle goodObstacle1 = new GoodObstacle((Pong.WIDTH - 50)*Math.random(),Pong.HEIGHT*Math.random());
-        // this.obstacles.add(goodObstacle1);
+        this.obstacles.add(goodObstacle1);
 
         BadObstacle badObstacle1 = new BadObstacle((Pong.WIDTH - 50)*Math.random(),Pong.HEIGHT*Math.random());
-        // this.obstacles.add(badObstacle1);
+        this.obstacles.add(badObstacle1);
     }
 
     public void draw(){
