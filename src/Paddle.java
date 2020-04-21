@@ -58,6 +58,13 @@ public class Paddle {
 		}
 	}
 
+	public void checkForBounce(Balls balls) {
+		for (Ball ball : balls.balls){
+			checkForBounce(ball);
+		}
+	}
+
+
 	/**
 	 * This method draws the paddle.
 	 */

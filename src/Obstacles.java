@@ -45,4 +45,38 @@ public class Obstacles {
         }
     }
 
+    public void triggerEvent(Balls balls){
+        ArrayList<Obstacle> triggeredObstacles = new ArrayList<Obstacle>();
+        ArrayList<Ball> triggeredBalls = new ArrayList<Ball>();
+
+        for (Obstacle obstacle : this.obstacles) {
+            for (Ball ball : balls.balls){
+                if (obstacle.checkForTrigger(ball)){
+                    triggeredObstacles.add(obstacle);
+                    triggeredBalls.add(ball);
+                }                
+            }
+        }
+        for (Obstacle triggeredObstacle : triggeredObstacles){
+            for (Ball triggeredBall : triggeredBalls){
+                
+                if (triggeredObstacle instanceof GoodObstacle){
+                    if(balls.balls.size()  > 1){
+                        balls.removeBall(triggeredBall);
+                    }
+                }
+                
+                if (triggeredObstacle instanceof BadObstacle){
+                    balls.addBall();
+                }
+                this.obstacles.remove(triggeredObstacle);
+    
+            }
+    
+    
+        }
+
+
+    }
+
 }

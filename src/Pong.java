@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 import javax.swing.*;
 
 /**
@@ -10,7 +12,8 @@ public class Pong extends SwingWorker {
     private Score leftScore;
     private Score rightScore;
 
-    private Ball ball;
+    private Balls balls;
+    
     private LeftPaddle leftPaddle;
     private RightPaddle rightPaddle;
     private Obstacles obstacles;
@@ -22,7 +25,7 @@ public class Pong extends SwingWorker {
         leftScore = new Score();
         rightScore = new Score();
 
-        ball = new Ball();
+        balls = new Balls();
         leftPaddle = new LeftPaddle();
         rightPaddle = new RightPaddle();
 
@@ -49,15 +52,16 @@ public class Pong extends SwingWorker {
             leftScore.writeToScreen(new Vector2(20, 480));
             rightScore.writeToScreen(new Vector2(480, 480));
 
-            ball.checkForBounce();
-            leftPaddle.checkForBounce(ball);
-            rightPaddle.checkForBounce(ball);
-            ball.updatePosition(0.167);
-            ball.draw();
+            balls.checkForBounce();
+            leftPaddle.checkForBounce(balls);
+            rightPaddle.checkForBounce(balls);
+            balls.updatePosition(0.167);
+            balls.draw();
             
             obstacles.draw();
+            obstacles.triggerEvent(balls);
 
-            leftPaddle.updatePosition(0.167, ball);
+            leftPaddle.updatePosition(0.167, balls);
             leftPaddle.draw();
 
             rightPaddle.updatePosition(0.167);
@@ -85,22 +89,26 @@ public class Pong extends SwingWorker {
      * Increment left and right paddle scores during game play
      */
     private void updateScore() {
-        Vector2 position = ball.getPosition();
+        for (Ball ball : this.balls.balls){
+            Vector2 position = ball.getPosition();
 
-        if (position.x <= 0) {
-            rightScore.addPoint();
-            reset();
-        } else if (position.x >= 500) {
-            leftScore.addPoint();
-            reset();
+            if (position.x <= 0) {
+                rightScore.addPoint();
+                reset();
+            } else if (position.x >= 500) {
+                leftScore.addPoint();
+                reset();
+            }
+                
         }
+
     }
 
     /**
      * Reset the ball and paddle positions to their initial values
      */
     private void reset() {
-        ball.reset();
+        balls.reset();
         leftPaddle.reset();
         rightPaddle.reset();
     }

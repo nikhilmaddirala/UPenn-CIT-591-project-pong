@@ -16,14 +16,5 @@ public class GoodObstacle extends Obstacle {
 	// Methods
 	// ================================================================================
 
-	/**
-	 * This method triggers the removal of a ball based on the result of
-	 * checkForTrigger.
-	 * 
-	 * @param checkForTrigger
-	 */
-	public void triggerEvent(boolean checkForTrigger) {
-
-	}
 
 }

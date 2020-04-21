@@ -6,6 +6,7 @@ public class Obstacle {
 	// ================================================================================
 	Vector2 position;
 	Vector2 velocity;
+	public static final double OBSTACLE_RADIUS = 10;
 
 	// ================================================================================
 	// Constructors
@@ -28,7 +29,10 @@ public class Obstacle {
 	public boolean checkForTrigger(Ball ball) {
 		boolean result = false;
 
-		// todo
+		if ((Math.abs(ball.getPosition().x - this.position.x) <= (Ball.RADIUS + OBSTACLE_RADIUS))
+				&& (Math.abs(ball.getPosition().y - this.position.y) <= (Ball.RADIUS + OBSTACLE_RADIUS))) {
+			result = true;
+		}
 
 		return result;
 	}
@@ -47,7 +51,13 @@ public class Obstacle {
 			PennDraw.setPenColor(PennDraw.GREEN);
 		}
 
-		PennDraw.filledSquare(position.x, position.y, 10);
+		PennDraw.filledSquare(position.x, position.y, OBSTACLE_RADIUS);
 	}
 
+
+	public void triggerEvent(boolean checkForTrigger) {
+		if (this instanceof GoodObstacle) {
+			// System.out.println("Good obstacle");
+		}
+	}
 }
