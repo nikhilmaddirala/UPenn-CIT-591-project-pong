@@ -11,6 +11,24 @@ public class Level {
     private static int difficulty = EASY;
     private static int mode = SINGLE_PLAYER;
 
+    public static final int BALLSPEED_EASY = 20;
+    public static final int BALLSPEED_MEDIUM = 40;
+    public static final int BALLSPEED_HARD = 60;
+
+    public static final int LEFTPADDLESPEED_EASY = BALLSPEED_EASY / 2;
+    public static final int LEFTPADDLESPEED_MEDIUM = BALLSPEED_MEDIUM / 2;
+    public static final int LEFTPADDLESPEED_HARD = BALLSPEED_HARD / 2;
+
+    public static final int GOODOBSTACLES_EASY = 0;
+    public static final int GOODOBSTACLES_MEDIUM = 5;
+    public static final int GOODOBSTACLES_HARD = 1;
+
+    public static final int BADOBSTACLES_EASY = 0;
+    public static final int BADOBSTACLES_MEDIUM = 1;
+    public static final int BADOBSTACLES_HARD = 1;
+
+
+
     /**
      * Constructor - cannot be instantiated
      */

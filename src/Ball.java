@@ -10,6 +10,7 @@ public class Ball {
 	private Vector2 initialPosition;
 	private Vector2 position;
 	private Vector2 velocity;
+	public static final double RADIUS = 20;
 
 	// ================================================================================
 	// Constructors
@@ -17,17 +18,19 @@ public class Ball {
 	public Ball() {
 		double x = 250;
 		double y = 250;
-		double speed = 25;
+		double speed = Level.BALLSPEED_EASY;
 
 		if (Level.getDifficulty() == Level.MEDIUM) {
-			speed = 30;
+			speed = Level.BALLSPEED_MEDIUM;
 		} else if (Level.getDifficulty() == Level.HARD) {
-			speed = 40;
+			speed = Level.BALLSPEED_HARD;
 		}
 
 		this.initialPosition = new Vector2(x, y);
 		this.position = new Vector2(x, y);
-		this.velocity = new Vector2(Math.random(), Math.random());
+		double xVelocity = Math.random();
+		double yVelocity = xVelocity;
+		this.velocity = new Vector2(xVelocity, yVelocity);
 		this.velocity = this.velocity.times(2.0);
 		this.velocity = this.velocity.minus(new Vector2(1.0, 1.0));
 		this.velocity = this.velocity.normalized();
@@ -60,7 +63,7 @@ public class Ball {
 	 * ball accordingly.
 	 */
 	public void checkForBounce() {
-		if (position.y <= 20.0 || position.y >= 480.0) {
+		if (position.y <= RADIUS || position.y >= 480.0) {
 			this.velocity = new Vector2(this.velocity.x, -this.velocity.y);
 		}
 	}
@@ -70,7 +73,7 @@ public class Ball {
 	 */
 	public void draw() {
 		PennDraw.setPenColor(PennDraw.RED);
-		PennDraw.filledCircle(position.x, position.y, 20);
+		PennDraw.filledCircle(position.x, position.y, RADIUS);
 	}
 
 	/**
@@ -78,6 +81,22 @@ public class Ball {
 	 */
 	public void reset() {
 		position = new Vector2(initialPosition.x, initialPosition.y);
+
+		double speed = Level.BALLSPEED_EASY;
+
+		if (Level.getDifficulty() == Level.MEDIUM) {
+			speed = Level.BALLSPEED_MEDIUM;
+		} else if (Level.getDifficulty() == Level.HARD) {
+			speed = Level.BALLSPEED_HARD;
+		}
+		double xVelocity = Math.random();
+		double yVelocity = Math.random();
+		this.velocity = new Vector2(xVelocity, yVelocity);
+		this.velocity = this.velocity.times(2.0);
+		this.velocity = this.velocity.minus(new Vector2(1.0, 1.0));
+		this.velocity = this.velocity.normalized();
+		this.velocity = this.velocity.times(speed);
+
 	}
 
 	/**

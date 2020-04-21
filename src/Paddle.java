@@ -13,12 +13,28 @@ public class Paddle {
 	// ================================================================================
 	// Constructors
 	// ================================================================================
-	public Paddle(double x, double y, double speed) {
-		this.initialPosition = new Vector2(x, y);
-		this.position = new Vector2(x, y);
-		this.halfHeight = 50;
-		this.halfWidth = 10;
-		this.speed = 20;
+	public Paddle() {
+
+		if (this instanceof LeftPaddle) {
+			this.initialPosition = new Vector2(10, 250);
+			this.position = new Vector2(10, 250);
+			this.halfHeight = 50;
+			this.halfWidth = 10;
+			this.speed = Level.LEFTPADDLESPEED_EASY;
+			if (Level.getDifficulty() == Level.MEDIUM) {
+				speed = Level.LEFTPADDLESPEED_MEDIUM;
+			} else if (Level.getDifficulty() == Level.HARD) {
+				speed = Level.LEFTPADDLESPEED_HARD;
+			}	
+		}
+
+		if (this instanceof RightPaddle) {
+			this.initialPosition = new Vector2(490, 250);
+			this.position = new Vector2(490, 250);
+			this.halfHeight = 50;
+			this.halfWidth = 10;
+			this.speed = 30;
+		}
 	}
 
 	// ================================================================================
@@ -30,7 +46,7 @@ public class Paddle {
 	 * @param ball The ball to be checked.
 	 */
 	public void checkForBounce(Ball ball) {
-		if (Math.abs(ball.getPosition().x - this.position.x) <= 20 + this.halfWidth
+		if (Math.abs(ball.getPosition().x - this.position.x) <= ball.RADIUS + this.halfWidth
 				&& ball.getPosition().y <= this.position.y + this.halfHeight
 				&& ball.getPosition().y >= this.position.y - this.halfHeight) {
 			Vector2 newBallVelocity = new Vector2(-ball.getVelocity().x, ball.getVelocity().y);
