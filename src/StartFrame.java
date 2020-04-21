@@ -4,10 +4,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
- * SettingsFrame is the initial screen where a user will select game settings and launch the game window
+ * StartFrame is the initial screen where a user will select game settings and launch the game window
  * with those settings applied
  */
-public class SettingsFrame extends JFrame implements ActionListener {
+public class StartFrame extends JFrame implements ActionListener {
 
     private JRadioButton easy;
     private JRadioButton medium;
@@ -17,9 +17,9 @@ public class SettingsFrame extends JFrame implements ActionListener {
     private JRadioButton twoPlayer;
 
     /**
-     * Constructor for SettingsFrame
+     * Constructor for StartFrame
      */
-    public SettingsFrame() {
+    public StartFrame() {
         super("Pong");
         //Fonts
         Font defaultFont = new Font("Courier", Font.PLAIN, 14);
@@ -45,9 +45,8 @@ public class SettingsFrame extends JFrame implements ActionListener {
         constraints.gridy = 0;
         add(welcomePnl, constraints);
 
-
+        // Radio buttons for game mode
         JPanel modePnl = new JPanel();
-        // Radio buttons for selecting number of players
         ButtonGroup mode = new ButtonGroup();
         singlePlayer = new JRadioButton("Single Player", true); // default selection
         twoPlayer = new JRadioButton("Two Player", false);
@@ -60,9 +59,8 @@ public class SettingsFrame extends JFrame implements ActionListener {
         constraints.gridy = 1;
         add(modePnl, constraints);
 
-
-        JPanel difficultyPnl = new JPanel();
         // Radio buttons for difficulty selection
+        JPanel difficultyPnl = new JPanel();
         ButtonGroup difficulty = new ButtonGroup();
         easy = new JRadioButton("Easy", true); // default selections
         medium = new JRadioButton("Medium", false);
@@ -79,13 +77,11 @@ public class SettingsFrame extends JFrame implements ActionListener {
         add(difficultyPnl, constraints);
 
 
-
-        JPanel startPnl = new JPanel();
         // Start button
+        JPanel startPnl = new JPanel();
         Button startBtn = new Button("Start");
         startBtn.setFont(defaultFont);
-        // Add event listeners
-        startBtn.addActionListener(this);
+        startBtn.addActionListener(this); // Add event listeners
         startPnl.add(startBtn);
         constraints.gridx = 0;
         constraints.gridy = 3;
