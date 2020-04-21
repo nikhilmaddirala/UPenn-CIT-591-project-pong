@@ -1,6 +1,13 @@
 import java.util.ArrayList;
 
 public class Obstacles {
+    public static final int GOODOBSTACLES_EASY = 0;
+    public static final int GOODOBSTACLES_MEDIUM = 5;
+    public static final int GOODOBSTACLES_HARD = 1;
+
+    public static final int BADOBSTACLES_EASY = 0;
+    public static final int BADOBSTACLES_MEDIUM = 1;
+    public static final int BADOBSTACLES_HARD = 1;
 
     private int numberOfGoodObstacles;
     private int numberOfBadObstacles;
@@ -11,14 +18,14 @@ public class Obstacles {
     public Obstacles() {
 
         if (Level.getDifficulty() == Level.EASY) {
-            numberOfGoodObstacles = Level.GOODOBSTACLES_EASY;
-            numberOfBadObstacles = Level.BADOBSTACLES_EASY;
+            numberOfGoodObstacles = GOODOBSTACLES_EASY;
+            numberOfBadObstacles = BADOBSTACLES_EASY;
         } else if (Level.getDifficulty() == Level.MEDIUM) {
-            numberOfGoodObstacles = Level.GOODOBSTACLES_MEDIUM;
-            numberOfBadObstacles = Level.BADOBSTACLES_MEDIUM;
+            numberOfGoodObstacles = GOODOBSTACLES_MEDIUM;
+            numberOfBadObstacles = BADOBSTACLES_MEDIUM;
         } else if (Level.getDifficulty() == Level.HARD) {
-            numberOfGoodObstacles = Level.GOODOBSTACLES_HARD;
-            numberOfBadObstacles = Level.BADOBSTACLES_HARD;
+            numberOfGoodObstacles = GOODOBSTACLES_HARD;
+            numberOfBadObstacles = BADOBSTACLES_HARD;
         }
 
         this.obstacles = new ArrayList<Obstacle>();
