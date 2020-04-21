@@ -1,5 +1,4 @@
 import javax.swing.*;
-import java.util.ArrayList;
 
 /**
  * Pong is where the initial game state is set up and subsequently tracked during game play.
@@ -104,5 +103,26 @@ public class Pong extends SwingWorker {
         ball.reset();
         leftPaddle.reset();
         rightPaddle.reset();
+    }
+
+    private void endGame() {
+        new EndFrame();
+        PennDraw.hide();
+    }
+
+    /**
+     * Determine game winner
+     * @return
+     */
+    public static String getWinner() {
+        return "";
+    }
+
+    /**
+     * Calculate high score for the game
+     * @return
+     */
+    public static int getHighScore() {
+        return 0;
     }
 }

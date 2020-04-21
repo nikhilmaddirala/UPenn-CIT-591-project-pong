@@ -7,7 +7,7 @@
 public class PongRunner {
 
 	public static void main(String[] args) {
-		SettingsFrame sf = new SettingsFrame();
+		StartFrame sf = new StartFrame();
 		sf.init();
 	}
 

@@ -25,16 +25,19 @@
  *
  *************************************************************************/
 
+import javax.imageio.ImageIO;
+import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.geom.*;
-import java.awt.image.*;
-import java.io.*;
-import java.net.*;
+import java.awt.image.BufferedImage;
+import java.awt.image.DirectColorModel;
+import java.awt.image.WritableRaster;
+import java.io.File;
+import java.io.IOException;
+import java.net.URL;
 import java.util.LinkedList;
 import java.util.TreeSet;
-import javax.imageio.ImageIO;
-import javax.swing.*;
 
 /**
  *  <i>Standard draw</i>. This class provides a basic capability for
@@ -1250,6 +1253,10 @@ public final class PennDraw implements ActionListener, MouseListener, MouseMotio
     public static void show() {
         defer = false;
         draw();
+    }
+
+    public static void hide() {
+        frame.dispose();
     }
 
     // draw onscreen if defer is false
