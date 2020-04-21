@@ -125,10 +125,4 @@ public class Pong extends SwingWorker {
     public static int getHighScore() {
         return 0;
     }
-
-    public static void main(String[] args) {
-        Pong p = new Pong();
-        p.createFrame();
-        p.initGame();
-    }
 }
