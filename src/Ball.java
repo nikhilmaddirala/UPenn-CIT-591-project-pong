@@ -4,6 +4,9 @@
  *
  */
 public class Ball {
+	public static final int BALLSPEED_EASY = 20;
+	public static final int BALLSPEED_MEDIUM = 40;
+	public static final int BALLSPEED_HARD = 60;
 	// ================================================================================
 	// Variables
 	// ================================================================================
@@ -18,13 +21,7 @@ public class Ball {
 	public Ball() {
 		double x = 250;
 		double y = 250;
-		double speed = Level.BALLSPEED_EASY;
-
-		if (Level.getDifficulty() == Level.MEDIUM) {
-			speed = Level.BALLSPEED_MEDIUM;
-		} else if (Level.getDifficulty() == Level.HARD) {
-			speed = Level.BALLSPEED_HARD;
-		}
+		double speed = getBallSpeed();
 
 		this.initialPosition = new Vector2(x, y);
 		this.position = new Vector2(x, y);
@@ -82,13 +79,7 @@ public class Ball {
 	public void reset() {
 		position = new Vector2(initialPosition.x, initialPosition.y);
 
-		double speed = Level.BALLSPEED_EASY;
-
-		if (Level.getDifficulty() == Level.MEDIUM) {
-			speed = Level.BALLSPEED_MEDIUM;
-		} else if (Level.getDifficulty() == Level.HARD) {
-			speed = Level.BALLSPEED_HARD;
-		}
+		double speed = getBallSpeed();
 		double xVelocity = Math.random();
 		double yVelocity = Math.random();
 		this.velocity = new Vector2(xVelocity, yVelocity);
@@ -113,5 +104,19 @@ public class Ball {
 	 */
 	public Vector2 getVelocity() {
 		return velocity;
+	}
+
+	/**
+	 * Determine ball speed based on the game difficulty level
+	 * @return double speed
+	 */
+	private double getBallSpeed() {
+		if (Level.getDifficulty() == Level.EASY) {
+			return BALLSPEED_EASY;
+		} else if (Level.getDifficulty() == Level.MEDIUM) {
+			return BALLSPEED_MEDIUM;
+		}
+
+		return BALLSPEED_HARD;
 	}
 }

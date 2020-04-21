@@ -25,7 +25,6 @@ public class RightPaddle extends Paddle {
 	 * It simulates a computer player controlling the paddle.
 	 * 
 	 * @param dt
-	 * @param ball
 	 */
 	public void updatePosition(double dt) {
 		if (PennDraw.isKeyPressed(KeyEvent.VK_UP) && (this.position.y + this.halfHeight <= Pong.HEIGHT)) {
