@@ -25,6 +25,7 @@ public class LeftPaddle extends Paddle {
 	 * input. Up arrow makes the paddle go up and down arrow makes it go down.
 	 * 
 	 * @param dt
+	 * @param ball
 	 */
 	public void updatePosition(double dt, Ball ball) {
 		if (Level.getMode() == Level.SINGLE_PLAYER) {
