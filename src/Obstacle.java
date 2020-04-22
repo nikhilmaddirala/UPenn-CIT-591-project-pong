@@ -54,10 +54,4 @@ public class Obstacle {
 		PennDraw.filledSquare(position.x, position.y, OBSTACLE_RADIUS);
 	}
 
-
-	public void triggerEvent(boolean checkForTrigger) {
-		if (this instanceof GoodObstacle) {
-			// System.out.println("Good obstacle");
-		}
-	}
 }

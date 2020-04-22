@@ -50,7 +50,7 @@ public class Obstacles {
         ArrayList<Ball> triggeredBalls = new ArrayList<Ball>();
 
         for (Obstacle obstacle : this.obstacles) {
-            for (Ball ball : balls.balls){
+            for (Ball ball : balls.getBalls()){
                 if (obstacle.checkForTrigger(ball)){
                     triggeredObstacles.add(obstacle);
                     triggeredBalls.add(ball);
@@ -61,7 +61,7 @@ public class Obstacles {
             for (Ball triggeredBall : triggeredBalls){
                 
                 if (triggeredObstacle instanceof GoodObstacle){
-                    if(balls.balls.size()  > 1){
+                    if(balls.getBalls().size()  > 1){
                         balls.removeBall(triggeredBall);
                     }
                 }

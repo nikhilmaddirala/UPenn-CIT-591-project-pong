@@ -1,14 +1,18 @@
 import java.util.ArrayList;
 
 public class Balls {
-    public ArrayList<Ball> balls;
+    private ArrayList<Ball> balls;
     private int numberOfBalls;
-
+    
     public Balls() {
         this.balls = new ArrayList<Ball>();
         balls.add(new Ball());
     }
 
+    public ArrayList<Ball> getBalls(){
+        return this.balls;
+    }
+    
     public void checkForBounce() {
         for (Ball ball : this.balls){
             ball.checkForBounce();

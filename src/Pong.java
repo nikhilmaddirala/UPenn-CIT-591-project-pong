@@ -89,7 +89,7 @@ public class Pong extends SwingWorker {
      * Increment left and right paddle scores during game play
      */
     private void updateScore() {
-        for (Ball ball : this.balls.balls){
+        for (Ball ball : this.balls.getBalls()){
             Vector2 position = ball.getPosition();
 
             if (position.x <= 0) {

@@ -59,7 +59,7 @@ public class Paddle {
 	}
 
 	public void checkForBounce(Balls balls) {
-		for (Ball ball : balls.balls){
+		for (Ball ball : balls.getBalls()){
 			checkForBounce(ball);
 		}
 	}

@@ -52,7 +52,7 @@ public class LeftPaddle extends Paddle {
 	}
 
 	public void updatePosition(double dt, Balls balls){
-		Ball ball = balls.balls.get(0);
+		Ball ball = balls.getBalls().get(0);
 		this.updatePosition(dt, ball);
 	}
 
