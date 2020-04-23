@@ -1,6 +1,13 @@
 import java.util.ArrayList;
 
+/**
+ * This class models a collection of obstacles.
+ */
 public class Obstacles {
+
+    // ================================================================================
+    // Variables
+    // ================================================================================
     public static final int GOODOBSTACLES_EASY = 0;
     public static final int GOODOBSTACLES_MEDIUM = 5;
     public static final int GOODOBSTACLES_HARD = 1;
@@ -15,6 +22,9 @@ public class Obstacles {
     ArrayList<GoodObstacle> goodObstacles;
     ArrayList<BadObstacle> badObstacles;
 
+    // ================================================================================
+    // Constructors
+    // ================================================================================
     public Obstacles() {
 
         if (Level.getDifficulty() == Level.EASY) {
@@ -31,51 +41,62 @@ public class Obstacles {
         this.obstacles = new ArrayList<Obstacle>();
 
         for (int i = 0; i < numberOfGoodObstacles; i++) {
-            this.obstacles.add(new GoodObstacle((Pong.WIDTH - 50) * Math.random(), (Pong.HEIGHT  - 50)*Math.random()));
+            this.obstacles.add(new GoodObstacle((Pong.WIDTH - 50) * Math.random(), (Pong.HEIGHT - 50) * Math.random()));
         }
 
         for (int i = 0; i < numberOfBadObstacles; i++) {
-            this.obstacles.add(new BadObstacle((Pong.WIDTH - 50) * Math.random(), (Pong.HEIGHT  - 50)*Math.random()));
+            this.obstacles.add(new BadObstacle((Pong.WIDTH - 50) * Math.random(), (Pong.HEIGHT - 50) * Math.random()));
         }
     }
 
+    // ================================================================================
+    // Methods
+    // ================================================================================
+    /**
+     * Draws all obstacles in the collection.
+     */
     public void draw() {
         for (Obstacle obstacle : this.obstacles) {
             obstacle.draw();
         }
     }
 
-    public void triggerEvent(Balls balls){
+    /**
+     * Triggers events based on ball contacting obstacles. When a ball touches an
+     * obstacle, the obstacle disappears and another ball is added or removed based
+     * on whether it was a bad or good obstacle.
+     * 
+     * @param balls
+     */
+    public void triggerEvent(Balls balls) {
         ArrayList<Obstacle> triggeredObstacles = new ArrayList<Obstacle>();
         ArrayList<Ball> triggeredBalls = new ArrayList<Ball>();
 
         for (Obstacle obstacle : this.obstacles) {
-            for (Ball ball : balls.getBalls()){
-                if (obstacle.checkForTrigger(ball)){
+            for (Ball ball : balls.getBalls()) {
+                if (obstacle.checkForTrigger(ball)) {
                     triggeredObstacles.add(obstacle);
                     triggeredBalls.add(ball);
-                }                
+                }
             }
         }
-        for (Obstacle triggeredObstacle : triggeredObstacles){
-            for (Ball triggeredBall : triggeredBalls){
-                
-                if (triggeredObstacle instanceof GoodObstacle){
-                    if(balls.getBalls().size()  > 1){
+        for (Obstacle triggeredObstacle : triggeredObstacles) {
+            for (Ball triggeredBall : triggeredBalls) {
+
+                if (triggeredObstacle instanceof GoodObstacle) {
+                    if (balls.getBalls().size() > 1) {
                         balls.removeBall(triggeredBall);
                     }
                 }
-                
-                if (triggeredObstacle instanceof BadObstacle){
+
+                if (triggeredObstacle instanceof BadObstacle) {
                     balls.addBall();
                 }
                 this.obstacles.remove(triggeredObstacle);
-    
-            }
-    
-    
-        }
 
+            }
+
+        }
 
     }
 

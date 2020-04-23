@@ -11,7 +11,6 @@ public class Paddle {
 	public static final int PADDLESPEED_MEDIUM = 20;
 	public static final int PADDLESPEED_HARD = 30;
 
-
 	// ================================================================================
 	// Variables
 	// ================================================================================
@@ -58,12 +57,16 @@ public class Paddle {
 		}
 	}
 
+	/**
+	 * This method checks bounce for all balls in a collection of balls.
+	 * 
+	 * @param balls
+	 */
 	public void checkForBounce(Balls balls) {
-		for (Ball ball : balls.getBalls()){
+		for (Ball ball : balls.getBalls()) {
 			checkForBounce(ball);
 		}
 	}
-
 
 	/**
 	 * This method draws the paddle.
@@ -73,12 +76,16 @@ public class Paddle {
 		PennDraw.filledRectangle(this.position.x, this.position.y, this.halfWidth, this.halfHeight);
 	}
 
+	/**
+	 * This method resets the paddle position.
+	 */
 	public void reset() {
 		position = new Vector2(initialPosition.x, initialPosition.y);
 	}
 
 	/**
 	 * Determines the paddle speed based on the level of game difficulty
+	 * 
 	 * @return double speed
 	 */
 	private double getPaddleSpeed() {

@@ -21,8 +21,8 @@ public class LeftPaddle extends Paddle {
 	// ================================================================================
 
 	/**
-	 * This method updates the position of the paddle based on user's keyboard
-	 * input. Up arrow makes the paddle go up and down arrow makes it go down.
+	 * This method updates the position of the paddle based on user's keyboard input
+	 * (in two player mode) or based on the computer logic (in one player mode).
 	 * 
 	 * @param dt
 	 * @param ball
@@ -51,7 +51,14 @@ public class LeftPaddle extends Paddle {
 
 	}
 
-	public void updatePosition(double dt, Balls balls){
+	/**
+	 * Same as the updatePosition(double dt, Ball ball) method, but for multiple
+	 * balls. Computer logic follows an arbitrary ball.
+	 * 
+	 * @param dt
+	 * @param balls
+	 */
+	public void updatePosition(double dt, Balls balls) {
 		Ball ball = balls.getBalls().get(0);
 		this.updatePosition(dt, ball);
 	}

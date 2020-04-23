@@ -16,5 +16,4 @@ public class GoodObstacle extends Obstacle {
 	// Methods
 	// ================================================================================
 
-
 }
