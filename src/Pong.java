@@ -93,9 +93,11 @@ public class Pong extends SwingWorker {
             Vector2 position = ball.getPosition();
 
             if (position.x <= 0) {
+                SoundEffect.ding();
                 rightScore.addPoint();
                 reset();
             } else if (position.x >= 500) {
+                SoundEffect.ding();
                 leftScore.addPoint();
                 reset();
             }
