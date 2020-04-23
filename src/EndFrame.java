@@ -3,9 +3,19 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * EndFrame is trigger when the win condition of the Pong game is met.
+ * It displays the winner and allows user to navigate back to the starting frame.
+ */
 public class EndFrame extends JFrame implements ActionListener {
-    public EndFrame(){
+
+    /**
+     * Constructor
+     * @param winner
+     */
+    public EndFrame(String winner){
         super("Pong");
+
         //Fonts
         Font defaultFont = new Font("Courier", Font.PLAIN, 14);
         Font heading = new Font("Courier", Font.BOLD, 30);
@@ -22,7 +32,7 @@ public class EndFrame extends JFrame implements ActionListener {
         JPanel msgPnl = new JPanel(new BorderLayout());
         JLabel gameOver = new JLabel("Game over", SwingConstants.CENTER);
         gameOver.setFont(heading);
-        JLabel instructions = new JLabel("The winner is " + Pong.getWinner() + " with " + Pong.getHighScore() + " points.", SwingConstants.CENTER);
+        JLabel instructions = new JLabel("The winner is " + winner + ".", SwingConstants.CENTER);
         instructions.setFont(defaultFont);
         msgPnl.add(gameOver, BorderLayout.PAGE_START);
         msgPnl.add(instructions, BorderLayout.PAGE_END);
@@ -43,12 +53,13 @@ public class EndFrame extends JFrame implements ActionListener {
         setVisible(true);
     }
 
-
-
+    /**
+     * Closes current frame and opens the starting frame
+     * @param e
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         new StartFrame().init();
         dispose();
-
     }
 }
