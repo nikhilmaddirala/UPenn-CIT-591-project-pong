@@ -52,8 +52,11 @@ public class Paddle {
 		if (Math.abs(ball.getPosition().x - this.position.x) <= ball.RADIUS + this.halfWidth
 				&& ball.getPosition().y <= this.position.y + this.halfHeight
 				&& ball.getPosition().y >= this.position.y - this.halfHeight) {
-			Vector2 newBallVelocity = new Vector2(-ball.getVelocity().x, ball.getVelocity().y);
-			ball.setVelocity(newBallVelocity);
+			
+			if ((this instanceof LeftPaddle && ball.getVelocity().x < 0) || (this instanceof RightPaddle && ball.getVelocity().x > 0)){
+				Vector2 newBallVelocity = new Vector2(-ball.getVelocity().x, ball.getVelocity().y);
+				ball.setVelocity(newBallVelocity);	
+			}
 		}
 	}
 

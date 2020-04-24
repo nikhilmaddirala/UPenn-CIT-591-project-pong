@@ -25,11 +25,10 @@ public class Ball {
 
 		this.initialPosition = new Vector2(x, y);
 		this.position = new Vector2(x, y);
-		double xVelocity = Math.random();
-		double yVelocity = xVelocity;
+		
+		double xVelocity = -1 + 2*Math.random();
+		double yVelocity = xVelocity*Math.random();
 		this.velocity = new Vector2(xVelocity, yVelocity);
-		this.velocity = this.velocity.times(2.0);
-		this.velocity = this.velocity.minus(new Vector2(1.0, 1.0));
 		this.velocity = this.velocity.normalized();
 		this.velocity = this.velocity.times(speed);
 	}
@@ -80,11 +79,9 @@ public class Ball {
 		position = new Vector2(initialPosition.x, initialPosition.y);
 
 		double speed = getBallSpeed();
-		double xVelocity = Math.random();
-		double yVelocity = Math.random();
+		double xVelocity = -1 + 2*Math.random();
+		double yVelocity = xVelocity*Math.random();
 		this.velocity = new Vector2(xVelocity, yVelocity);
-		this.velocity = this.velocity.times(2.0);
-		this.velocity = this.velocity.minus(new Vector2(1.0, 1.0));
 		this.velocity = this.velocity.normalized();
 		this.velocity = this.velocity.times(speed);
 
