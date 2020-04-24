@@ -3,6 +3,7 @@
 ### Starting the game
 Clone this repo and start the application by running the main method in ```PongRunner.java```.
 This will launch the welcome window.
+
 ![Initial screen](./screenshots/startframe.png)
 
 
@@ -22,6 +23,7 @@ wins the game.
 
 
 Once someone has won, the game window will close and a final window will launch.
+
 ![Final screen](./screenshots/endframe.png)
 
 Here, you'll see who won and have the option to return to the starting screen by clicking on **New Game**. Optionally, you can
