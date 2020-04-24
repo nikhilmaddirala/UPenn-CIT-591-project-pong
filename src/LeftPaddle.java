@@ -8,7 +8,7 @@ public class LeftPaddle extends Paddle {
 	// ================================================================================
 	// Variables
 	// ================================================================================
-
+	public static final String OWNER = Level.getMode() == Level.SINGLE_PLAYER ? "Computer" : "Player 2";
 	// ================================================================================
 	// Constructors
 	// ================================================================================
@@ -19,7 +19,6 @@ public class LeftPaddle extends Paddle {
 	// ================================================================================
 	// Methods
 	// ================================================================================
-
 	/**
 	 * This method updates the position of the paddle based on user's keyboard input
 	 * (in two player mode) or based on the computer logic (in one player mode).

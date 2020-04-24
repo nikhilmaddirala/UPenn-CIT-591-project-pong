@@ -54,8 +54,9 @@ public class Paddle {
 				&& ball.getPosition().y >= this.position.y - this.halfHeight) {
 			
 			if ((this instanceof LeftPaddle && ball.getVelocity().x < 0) || (this instanceof RightPaddle && ball.getVelocity().x > 0)){
+				SoundEffect.blip();
 				Vector2 newBallVelocity = new Vector2(-ball.getVelocity().x, ball.getVelocity().y);
-				ball.setVelocity(newBallVelocity);	
+				ball.setVelocity(newBallVelocity);
 			}
 		}
 	}
