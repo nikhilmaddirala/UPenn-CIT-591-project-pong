@@ -8,7 +8,7 @@ public class RightPaddle extends Paddle {
 	// ================================================================================
 	// Variables
 	// ================================================================================
-
+	public static final String OWNER = "Player 1";
 	// ================================================================================
 	// Constructors
 	// ================================================================================
@@ -35,6 +35,5 @@ public class RightPaddle extends Paddle {
 			Vector2 downVelocity = new Vector2(0, (-1) * this.speed);
 			this.position = this.position.plus(downVelocity.times(dt));
 		}
-
 	}
 }
