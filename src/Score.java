@@ -1,11 +1,14 @@
+/**
+ * Score handles updating and writing game scores to the PennDraw window
+ */
 public class Score {
-    private int currentScore;
+    private int value;
 
     /**
      * Constructor
      */
     Score() {
-        currentScore = 0;
+        value = 0;
     }
 
 
@@ -13,26 +16,23 @@ public class Score {
      * Adds a point
      */
     public void addPoint() {
-        currentScore++;
-    }
-
-    /**
-     * Subtracts a point
-     */
-    public void subtractPoint() {
-        currentScore--;
+        value++;
     }
 
     /**
      * Gets the current score
      * @return current score
      */
-    public int getCurrentScore() {
-        return currentScore;
+    public int getValue() {
+        return value;
     }
 
+    /**
+     * Writes the score to the game window at a given position
+     * @param position
+     */
     public void writeToScreen(Vector2 position) {
         PennDraw.setFont("Courier", 30);
-        PennDraw.text(position.x, position.y, Integer.toString(currentScore));
+        PennDraw.text(position.x, position.y, Integer.toString(value));
     }
 }

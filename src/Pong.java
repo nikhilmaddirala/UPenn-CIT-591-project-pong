@@ -1,5 +1,3 @@
-import java.util.ArrayList;
-
 import javax.swing.*;
 
 /**
@@ -8,6 +6,7 @@ import javax.swing.*;
 public class Pong extends SwingWorker {
     public static final int WIDTH = 500;
     public static final int HEIGHT = 500;
+    private static final int WINNING_SCORE = 11; // In honor of Atari's original Pong which was first to 11 points
 
     private Score leftScore;
     private Score rightScore;
@@ -33,7 +32,7 @@ public class Pong extends SwingWorker {
     }
 
     /**
-     * Use PennDraw to create Pong frame
+     * Uses PennDraw to create Pong window
      */
     private void createFrame() {
         PennDraw.setCanvasSize(Pong.WIDTH, Pong.HEIGHT);
@@ -46,7 +45,7 @@ public class Pong extends SwingWorker {
      */
     private void initGame() {
 
-        while(true) {
+        while(!winnerFound()) {
             PennDraw.clear();
 
             leftScore.writeToScreen(new Vector2(20, 480));
@@ -72,10 +71,11 @@ public class Pong extends SwingWorker {
             PennDraw.advance();
         }
 
+        endGame();
     }
 
     /**
-     * Create game JFrame on a background thread
+     * Runs game on a background thread
      * @return null
      */
     @Override
@@ -86,16 +86,18 @@ public class Pong extends SwingWorker {
     }
 
     /**
-     * Increment left and right paddle scores during game play
+     * Increments left and right paddle scores
      */
     private void updateScore() {
         for (Ball ball : this.balls.getBalls()){
             Vector2 position = ball.getPosition();
 
             if (position.x <= 0) {
+                SoundEffect.ding();
                 rightScore.addPoint();
                 reset();
             } else if (position.x >= 500) {
+                SoundEffect.ding();
                 leftScore.addPoint();
                 reset();
             }
@@ -113,24 +115,27 @@ public class Pong extends SwingWorker {
         rightPaddle.reset();
     }
 
+    /**
+     * Closes the game frame and opens the end frame
+     */
     private void endGame() {
-        new EndFrame();
+        new EndFrame(getWinner());
         PennDraw.hide();
     }
 
     /**
-     * Determine game winner
-     * @return
+     * Determines winning player
+     * @return String - either Player 1, Player 2, or Computer
      */
-    public static String getWinner() {
-        return "";
+    private String getWinner() {
+        return rightScore.getValue() == WINNING_SCORE ? RightPaddle.OWNER : LeftPaddle.OWNER;
     }
 
     /**
-     * Calculate high score for the game
-     * @return
+     * Determines if either score has reached the winning score of 11
+     * @return boolean
      */
-    public static int getHighScore() {
-        return 0;
+    private boolean winnerFound() {
+        return Math.max(rightScore.getValue(), leftScore.getValue()) == WINNING_SCORE;
     }
 }

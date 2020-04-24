@@ -89,28 +89,30 @@ public class StartFrame extends JFrame implements ActionListener {
     }
 
     /**
-     * Display the frame window
+     * Display the window
      */
     public void init() {
         setVisible(true);
     }
 
     /**
-     * Overriding action listener event handle to show game window after a click
+     * Overriding action listener event handle to dismiss current window and show game window after a click
      * @param e
      */
     @Override
     public void actionPerformed(ActionEvent e) {
 
-        //easy is the default level so it does not need to be checked
-        if (medium.isSelected()) {
+        if (easy.isSelected()) {
+            Level.setDifficulty(Level.EASY);
+        } else if (medium.isSelected()) {
            Level.setDifficulty(Level.MEDIUM);
         } else if (hard.isSelected()){
             Level.setDifficulty(Level.HARD);
         }
 
-        //single player is the default mode so it does not need to be checked
-        if (twoPlayer.isSelected()) {
+        if (singlePlayer.isSelected()) {
+            Level.setMode(Level.SINGLE_PLAYER);
+        } else if (twoPlayer.isSelected()) {
             Level.setMode(Level.TWO_PLAYER);
         }
 
