@@ -1,4 +1,11 @@
-# CIT591-project-pong
+# Team 28 - Pong
+
+### Members
+Nikhil Maddirala, Thelma Boamah
+
+### System requirements
+* Java version 9 or later
+* JUnit 5
 
 ### Starting the game
 Clone this repo and start the application by running the main method in ```PongRunner.java```.
