@@ -5,6 +5,9 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class LevelTest {
 
+    /**
+     * Test that the difficulty value is the correct integer
+     */
     @Test
     void setDifficulty() {
         Level.setDifficulty(1);
@@ -17,6 +20,9 @@ class LevelTest {
         assertEquals(Level.getDifficulty(), Level.HARD);
     }
 
+    /**
+     * Test that the mode value is the correct integer
+     */
     @Test
     void setMode() {
         Level.setMode(1);
