@@ -1,5 +1,6 @@
 
 public class Paddle {
+
 	private static final double LEFTX = 10;
 	private static final double LEFTY = 250;
 	private static final double RIGHTX = 490;
@@ -10,19 +11,12 @@ public class Paddle {
 	public static final int PADDLESPEED_EASY = 10;
 	public static final int PADDLESPEED_MEDIUM = 20;
 	public static final int PADDLESPEED_HARD = 30;
-
-	// ================================================================================
-	// Variables
-	// ================================================================================
 	public Vector2 initialPosition;
 	public Vector2 position;
 	public double halfWidth;
 	public double halfHeight;
 	public double speed;
 
-	// ================================================================================
-	// Constructors
-	// ================================================================================
 	public Paddle() {
 		halfHeight = HALF_HEIGHT;
 		halfWidth = HALF_WIDTH;
@@ -40,9 +34,6 @@ public class Paddle {
 		}
 	}
 
-	// ================================================================================
-	// Methods
-	// ================================================================================
 	/**
 	 * This method checks whether a ball should bounce off the paddle.
 	 * 
@@ -52,8 +43,9 @@ public class Paddle {
 		if (Math.abs(ball.getPosition().x - this.position.x) <= ball.RADIUS + this.halfWidth
 				&& ball.getPosition().y <= this.position.y + this.halfHeight
 				&& ball.getPosition().y >= this.position.y - this.halfHeight) {
-			
-			if ((this instanceof LeftPaddle && ball.getVelocity().x < 0) || (this instanceof RightPaddle && ball.getVelocity().x > 0)){
+
+			if ((this instanceof LeftPaddle && ball.getVelocity().x < 0)
+					|| (this instanceof RightPaddle && ball.getVelocity().x > 0)) {
 				SoundEffect.blip();
 				Vector2 newBallVelocity = new Vector2(-ball.getVelocity().x, ball.getVelocity().y);
 				ball.setVelocity(newBallVelocity);

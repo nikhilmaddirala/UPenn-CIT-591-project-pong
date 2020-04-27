@@ -5,9 +5,6 @@ import java.util.ArrayList;
  */
 public class Obstacles {
 
-    // ================================================================================
-    // Variables
-    // ================================================================================
     public static final int GOODOBSTACLES_EASY = 0;
     public static final int GOODOBSTACLES_MEDIUM = 5;
     public static final int GOODOBSTACLES_HARD = 1;
@@ -22,9 +19,6 @@ public class Obstacles {
     ArrayList<GoodObstacle> goodObstacles;
     ArrayList<BadObstacle> badObstacles;
 
-    // ================================================================================
-    // Constructors
-    // ================================================================================
     public Obstacles() {
 
         if (Level.getDifficulty() == Level.EASY) {
@@ -49,9 +43,6 @@ public class Obstacles {
         }
     }
 
-    // ================================================================================
-    // Methods
-    // ================================================================================
     /**
      * Draws all obstacles in the collection.
      */

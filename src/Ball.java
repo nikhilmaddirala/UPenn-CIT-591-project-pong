@@ -4,9 +4,7 @@
  *
  */
 public class Ball {
-	// ================================================================================
-	// Variables
-	// ================================================================================
+
 	public static final int BALLSPEED_EASY = 20;
 	public static final int BALLSPEED_MEDIUM = 40;
 	public static final int BALLSPEED_HARD = 60;
@@ -15,9 +13,6 @@ public class Ball {
 	private Vector2 velocity;
 	public static final double RADIUS = 20;
 
-	// ================================================================================
-	// Constructors
-	// ================================================================================
 	public Ball() {
 		double x = 250;
 		double y = 250;
@@ -33,9 +28,6 @@ public class Ball {
 		this.velocity = this.velocity.times(speed);
 	}
 
-	// ================================================================================
-	// Methods
-	// ================================================================================
 	/**
 	 * This method updates the position of the ball based on time elapsed.
 	 * 
