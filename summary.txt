@@ -1,0 +1,17 @@
+Project description
+Our project is an implementation of the classic computer game Pong. We have enhanced it by providing a single
+player mode, a two player mode, and difficulty levels that incorporate obstacles. We used PennDraw as our graphics library.
+We built additional Swing components to accept user inputs and included sound to enrich the user experience.
+
+Work Breakdown
+Nikhil Maddirala
+* Implementation of ball, paddle, computerized paddle, obstacle classes and game logic
+
+Thelma Boamah
+* Implementation of starting and ending windows, game scoring, level class and sound effects
+
+Both
+* Design, code review, testing
+
+Repo
+https://github.com/UPenn-CIT599/final-project-team-28
