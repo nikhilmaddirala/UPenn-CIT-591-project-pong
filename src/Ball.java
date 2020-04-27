@@ -7,17 +7,15 @@ public class Ball {
 	public static final int BALLSPEED_EASY = 20;
 	public static final int BALLSPEED_MEDIUM = 40;
 	public static final int BALLSPEED_HARD = 60;
-	// ================================================================================
-	// Variables
-	// ================================================================================
+	public static final double RADIUS = 20;
+
 	private Vector2 initialPosition;
 	private Vector2 position;
 	private Vector2 velocity;
-	public static final double RADIUS = 20;
 
-	// ================================================================================
-	// Constructors
-	// ================================================================================
+	/**
+	 * Ball constructor
+	 */
 	public Ball() {
 		double x = 250;
 		double y = 250;
@@ -33,12 +31,8 @@ public class Ball {
 		this.velocity = this.velocity.times(speed);
 	}
 
-	// ================================================================================
-	// Methods
-	// ================================================================================
 	/**
 	 * This method updates the position of the ball based on time elapsed.
-	 * 
 	 * @param dt The amount of time elapsed.
 	 */
 	public void updatePosition(double dt) {
@@ -47,7 +41,6 @@ public class Ball {
 
 	/**
 	 * This method sets the velocity of the ball.
-	 * 
 	 * @param velocity Desired velocity of the ball.
 	 */
 	public void setVelocity(Vector2 velocity) {

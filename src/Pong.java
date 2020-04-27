@@ -6,7 +6,7 @@ import javax.swing.*;
 public class Pong extends SwingWorker {
     public static final int WIDTH = 500;
     public static final int HEIGHT = 500;
-    private static final int WINNING_SCORE = 11; // In honor of Atari's original Pong which was first to 11 points
+    public static final int WINNING_SCORE = 11; // In honor of Atari's original Pong which was first to 11 points
 
     private Score leftScore;
     private Score rightScore;
