@@ -5,7 +5,6 @@ public class BadObstacle extends Obstacle {
 
 	public BadObstacle(double x, double y) {
 		super(x, y);
-		// TODO Auto-generated constructor stub
 	}
 
 	/**

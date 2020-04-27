@@ -35,14 +35,29 @@ public class Paddle {
 	}
 
 	/**
+	 * This method checks whether the a bounce should be triggered based on the paddle and ball positions.
+	 * @param ball Ball to check.
+	 * @return True or false.
+	 */
+	public boolean bounceTrigger(Ball ball) {
+		boolean withinXWindow = Math.abs(ball.getPosition().x - this.position.x) <= ball.RADIUS + this.halfWidth;
+		boolean withinYWindow = ball.getPosition().y <= this.position.y + this.halfHeight
+				&& ball.getPosition().y >= this.position.y - this.halfHeight;
+
+		if (withinXWindow && withinYWindow) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	/**
 	 * This method checks whether a ball should bounce off the paddle.
 	 * 
 	 * @param ball The ball to be checked.
 	 */
 	public void checkForBounce(Ball ball) {
-		if (Math.abs(ball.getPosition().x - this.position.x) <= ball.RADIUS + this.halfWidth
-				&& ball.getPosition().y <= this.position.y + this.halfHeight
-				&& ball.getPosition().y >= this.position.y - this.halfHeight) {
+		if (this.bounceTrigger(ball)) {
 
 			if ((this instanceof LeftPaddle && ball.getVelocity().x < 0)
 					|| (this instanceof RightPaddle && ball.getVelocity().x > 0)) {
