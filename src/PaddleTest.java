@@ -19,6 +19,9 @@ public class PaddleTest {
 
     }
 
+    /**
+     * Test that the paddle is correctly initialized at the correct positions.
+     */
     @Test
     public void initTest() {
 

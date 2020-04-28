@@ -35,3 +35,6 @@ Once someone has won, the game window will close and a final window will launch.
 
 Here, you'll see who won and have the option to return to the starting screen by clicking on **New Game**. Optionally, you can
 close the window to stop running the application.
+
+### Video demonstration
+Here is a [video demo](https://www.youtube.com/watch?v=kwz_JDXsNpo) of the game in action!

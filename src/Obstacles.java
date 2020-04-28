@@ -43,6 +43,11 @@ public class Obstacles {
         }
     }
 
+    public Obstacles(Obstacle obstacle){
+        this.obstacles = new ArrayList<Obstacle>();
+        this.obstacles.add(obstacle);
+    }
+
     /**
      * Draws all obstacles in the collection.
      */

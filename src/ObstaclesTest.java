@@ -23,4 +23,23 @@ public class ObstaclesTest {
 
     }
 
+    /**
+     * Test that obstacle is disappearing after getting triggered by ball. Start
+     * with one obstacle and then trigger it with a ball, resulting in zero
+     * obstacles at the end.
+     */
+    @Test
+    public void triggerEvent() {
+        Balls balls = new Balls();
+        Obstacle obstacle = new Obstacle(250, 250);
+        Obstacles obstacles = new Obstacles(obstacle);
+
+        assertEquals(1, obstacles.obstacles.size());
+
+        obstacles.triggerEvent(balls);
+
+        assertEquals(0, obstacles.obstacles.size());
+
+    }
+
 }

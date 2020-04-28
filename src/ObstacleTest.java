@@ -12,6 +12,9 @@ public class ObstacleTest {
         Ball ball = new Ball();
         Obstacle obstacle = new Obstacle(250, 250);
         assertEquals(true, obstacle.checkForTrigger(ball));
+
+        Obstacle obstacle2 = new Obstacle(0, 0);
+        assertEquals(false, obstacle2.checkForTrigger(ball));
     }
 
     /**
