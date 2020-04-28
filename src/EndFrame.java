@@ -4,7 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
- * EndFrame is trigger when the win condition of the Pong game is met.
+ * EndFrame is triggered when the win condition of the Pong game is met.
  * It displays the winner and allows user to navigate back to the starting frame.
  */
 public class EndFrame extends JFrame implements ActionListener {

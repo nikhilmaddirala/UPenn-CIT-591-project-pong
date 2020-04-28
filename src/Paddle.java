@@ -1,5 +1,8 @@
-
+/**
+ * This class models the paddle.
+ */
 public class Paddle {
+
 	private static final double LEFTX = 10;
 	private static final double LEFTY = 250;
 	private static final double RIGHTX = 490;
@@ -10,19 +13,12 @@ public class Paddle {
 	public static final int PADDLESPEED_EASY = 10;
 	public static final int PADDLESPEED_MEDIUM = 20;
 	public static final int PADDLESPEED_HARD = 30;
-
-	// ================================================================================
-	// Variables
-	// ================================================================================
 	public Vector2 initialPosition;
 	public Vector2 position;
 	public double halfWidth;
 	public double halfHeight;
 	public double speed;
 
-	// ================================================================================
-	// Constructors
-	// ================================================================================
 	public Paddle() {
 		halfHeight = HALF_HEIGHT;
 		halfWidth = HALF_WIDTH;
@@ -40,20 +36,33 @@ public class Paddle {
 		}
 	}
 
-	// ================================================================================
-	// Methods
-	// ================================================================================
+	/**
+	 * This method checks whether the a bounce should be triggered based on the paddle and ball positions.
+	 * @param ball Ball to check.
+	 * @return True or false.
+	 */
+	public boolean bounceTrigger(Ball ball) {
+		boolean withinXWindow = Math.abs(ball.getPosition().x - this.position.x) <= ball.RADIUS + this.halfWidth;
+		boolean withinYWindow = ball.getPosition().y <= this.position.y + this.halfHeight
+				&& ball.getPosition().y >= this.position.y - this.halfHeight;
+
+		if (withinXWindow && withinYWindow) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
 	/**
 	 * This method checks whether a ball should bounce off the paddle.
 	 * 
 	 * @param ball The ball to be checked.
 	 */
 	public void checkForBounce(Ball ball) {
-		if (Math.abs(ball.getPosition().x - this.position.x) <= ball.RADIUS + this.halfWidth
-				&& ball.getPosition().y <= this.position.y + this.halfHeight
-				&& ball.getPosition().y >= this.position.y - this.halfHeight) {
-			
-			if ((this instanceof LeftPaddle && ball.getVelocity().x < 0) || (this instanceof RightPaddle && ball.getVelocity().x > 0)){
+		if (this.bounceTrigger(ball)) {
+
+			if ((this instanceof LeftPaddle && ball.getVelocity().x < 0)
+					|| (this instanceof RightPaddle && ball.getVelocity().x > 0)) {
 				SoundEffect.blip();
 				Vector2 newBallVelocity = new Vector2(-ball.getVelocity().x, ball.getVelocity().y);
 				ball.setVelocity(newBallVelocity);
@@ -61,7 +70,12 @@ public class Paddle {
 		}
 	}
 
-	public void checkForBounce(Balls balls){
+	/**
+	 * This method checks bounce for all balls in a collection of balls.
+	 * 
+	 * @param balls
+	 */
+	public void checkForBounce(Balls balls) {
 		for (Ball ball : balls.getBalls()) {
 			checkForBounce(ball);
 		}
@@ -75,12 +89,16 @@ public class Paddle {
 		PennDraw.filledRectangle(this.position.x, this.position.y, this.halfWidth, this.halfHeight);
 	}
 
+	/**
+	 * This method resets the paddle position.
+	 */
 	public void reset() {
 		position = new Vector2(initialPosition.x, initialPosition.y);
 	}
 
 	/**
 	 * Determines the paddle speed based on the level of game difficulty
+	 * 
 	 * @return double speed
 	 */
 	private double getPaddleSpeed() {

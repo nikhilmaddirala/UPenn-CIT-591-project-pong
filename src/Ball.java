@@ -4,6 +4,7 @@
  *
  */
 public class Ball {
+
 	public static final int BALLSPEED_EASY = 20;
 	public static final int BALLSPEED_MEDIUM = 40;
 	public static final int BALLSPEED_HARD = 60;
@@ -82,6 +83,7 @@ public class Ball {
 
 	/**
 	 * Get the current position
+	 * 
 	 * @return Vector2 - ball position
 	 */
 	public Vector2 getPosition() {
@@ -90,6 +92,7 @@ public class Ball {
 
 	/**
 	 * Get the current velocity
+	 * 
 	 * @return Vector2 - ball velocity
 	 */
 	public Vector2 getVelocity() {
@@ -98,6 +101,7 @@ public class Ball {
 
 	/**
 	 * Determine ball speed based on the game difficulty level
+	 * 
 	 * @return double speed
 	 */
 	private double getBallSpeed() {
