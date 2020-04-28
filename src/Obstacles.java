@@ -16,9 +16,10 @@ public class Obstacles {
     private int numberOfGoodObstacles;
     private int numberOfBadObstacles;
     ArrayList<Obstacle> obstacles;
-    ArrayList<GoodObstacle> goodObstacles;
-    ArrayList<BadObstacle> badObstacles;
 
+    /**
+     * Constructor
+     */
     public Obstacles() {
 
         if (Level.getDifficulty() == Level.EASY) {
@@ -43,6 +44,10 @@ public class Obstacles {
         }
     }
 
+    /**
+     * Constructor
+     * @param obstacle
+     */
     public Obstacles(Obstacle obstacle){
         this.obstacles = new ArrayList<Obstacle>();
         this.obstacles.add(obstacle);

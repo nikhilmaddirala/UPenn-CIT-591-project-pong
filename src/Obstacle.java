@@ -2,7 +2,6 @@
 public class Obstacle {
 
 	Vector2 position;
-	Vector2 velocity;
 	public static final double OBSTACLE_RADIUS = 10;
 
 	public Obstacle(double x, double y) {
