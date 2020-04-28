@@ -1,4 +1,6 @@
-
+/**
+ * This class models a single obstacle
+ */
 public class Obstacle {
 
 	Vector2 position;

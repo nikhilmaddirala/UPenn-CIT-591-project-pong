@@ -4,6 +4,9 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class Vector2Test {
 
+    /**
+     * Tests that vectors are multiplied by a given number
+     */
     @Test
     public void times() {
 

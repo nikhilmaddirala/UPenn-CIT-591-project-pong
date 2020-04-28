@@ -6,7 +6,6 @@ import java.util.ArrayList;
 public class Balls {
 
     private ArrayList<Ball> balls;
-    private int numberOfBalls;
 
     public Balls() {
         this.balls = new ArrayList<Ball>();
