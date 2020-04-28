@@ -15,7 +15,7 @@ public class PaddleTest {
         assertEquals(false, leftPaddle.bounceTrigger(ball));
 
         RightPaddle rightPaddle = new RightPaddle();
-        assertEquals(false, leftPaddle.bounceTrigger(ball));
+        assertEquals(false, rightPaddle.bounceTrigger(ball));
 
     }
 

@@ -1,4 +1,6 @@
-
+/**
+ * This class models the paddle.
+ */
 public class Paddle {
 
 	private static final double LEFTX = 10;
