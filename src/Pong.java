@@ -32,7 +32,7 @@ public class Pong extends SwingWorker {
     }
 
     /**
-     * Use PennDraw to create Pong frame
+     * Uses PennDraw to create Pong window
      */
     private void createFrame() {
         PennDraw.setCanvasSize(Pong.WIDTH, Pong.HEIGHT);
@@ -86,7 +86,7 @@ public class Pong extends SwingWorker {
     }
 
     /**
-     * Increment left and right paddle scores
+     * Increments left and right paddle scores
      */
     private void updateScore() {
         for (Ball ball : this.balls.getBalls()){

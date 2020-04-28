@@ -2,6 +2,9 @@ import javax.sound.sampled.*;
 import java.io.File;
 import java.io.IOException;
 
+/**
+ * SoundEffect manages audio snippets
+ */
 public class SoundEffect {
 
     /**

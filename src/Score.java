@@ -1,3 +1,6 @@
+/**
+ * Score handles updating and writing game scores to the PennDraw window
+ */
 public class Score {
     private int value;
 
